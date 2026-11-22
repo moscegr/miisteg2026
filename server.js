@@ -400,7 +400,7 @@ const server = http.createServer(async (req, res) => {
 });
 
 initMongo().finally(() => {
-  server.listen(PORT, '0.0.0.0', () => {
-    console.log(`Servidor MIISTEG ejecutándose en http://0.0.0.0:${PORT}`);
+  server.listen(PORT, () => {
+    console.log(`Servidor MIISTEG ejecutándose en el puerto ${PORT} (IPv4/IPv6)`);
   });
 });
