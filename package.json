@@ -1,0 +1,12 @@
+{
+  "name": "foro-miisteg-guerrero",
+  "version": "1.0.0",
+  "description": "Plataforma Web Administrable para el 1.er Foro Estatal de Mujeres en la Ciencia y Tecnología (MIISTEG - Guerrero)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "mongodb": "^7.9.1"
+  }
+}

@@ -1,0 +1,348 @@
+{
+  "config": {
+    "siglas": "MIISTEG",
+    "significadoSiglas": "Mujeres Investigadoras, Innovadoras, Siempre Tecnológicas y Empoderadas de Guerrero",
+    "lemaSuperior": "¡LA CIENCIA Y LA INNOVACIÓN TIENEN VOZ DE MUJER EN GUERRERO!",
+    "titulo": "1.er FORO ESTATAL DE MUJERES EN LA CIENCIA Y TECNOLOGÍA",
+    "subtitulo": "Mujeres Innovando el Futuro de Guerrero: Media Superior y Superior.",
+    "descripcion": "Un espacio de encuentro, diálogo y colaboración para reconocer el talento de las mujeres que investigan, innovan, enseñan y transforman nuestra sociedad.",
+    "eslogan": "¡Unidas por la ciencia, conectadas por la innovación y comprometidas con Guerrero!",
+    "fechaTexto": "7 de diciembre de 2026",
+    "fechaISO": "2026-12-07T09:30:00-06:00",
+    "horarioTexto": "9:30 a 16:00 hrs",
+    "sede": "Auditorio José Joaquín de Herrera",
+    "ciudad": "Chilpancingo de los Bravo, Guerrero",
+    "direccionSede": "Recinto Oficial, Chilpancingo de los Bravo, Gro., México",
+    "contactoNombre": "Mtra. Yammel Anilú Martínez Saavedra",
+    "contactoCargo": "Coordinadora General del Foro MIISTEG",
+    "contactoTelefono": "744 424 5666",
+    "contactoEmail": "mujeresinvestigadorasguerrero@gmail.com",
+    "logoUrl": "/uploads/logo-miisteg-transparent.png",
+    "ilustracionHeroUrl": "/uploads/ilustracion-miisteg.png",
+    "transmisionUrl": "https://www.youtube.com/embed/live_stream",
+    "registroAbierto": true,
+    "constanciasLiberadas": true,
+    "textoConstancia": "Por su destacada y valiosa participación en el 1.er Foro Estatal de Mujeres en la Ciencia y Tecnología: «Mujeres Innovando el Futuro de Guerrero: Media Superior y Superior», organizado por la red Mujeres Investigadoras, Innovadoras, Siempre Tecnológicas y Empoderadas de Guerrero (MIISTEG).",
+    "firmante1Nombre": "Mtra. Yammel Anilú Martínez Saavedra",
+    "firmante1Cargo": "Coordinadora General MIISTEG",
+    "firmante2Nombre": "Comité Científico y Académico",
+    "firmante2Cargo": "1.er Foro Estatal de Mujeres en la Ciencia y Tecnología",
+    "hashtags": [
+      "#MIISTEG",
+      "#MujeresEnLaCiencia",
+      "#MujeresSTEM",
+      "#Investigación",
+      "#Innovación",
+      "#Guerrero",
+      "#LiderazgoFemenino",
+      "#EducaciónSuperior",
+      "#EducaciónMediaSuperior",
+      "#MujeresQueTransforman"
+    ]
+  },
+  "ejes": [
+    {
+      "id": "eje-1",
+      "numero": "EJE 1",
+      "titulo": "Investigación de Impacto y Saberes Locales",
+      "descripcion": "Ciencia y conocimiento para transformar nuestras comunidades, vinculando la investigación aplicada con el desarrollo sostenible, la biodiversidad y los saberes de las regiones de Guerrero.",
+      "icono": "microscope",
+      "color": "#0d9488",
+      "imagen": "/uploads/ponencia-saberes-locales.jpg"
+    },
+    {
+      "id": "eje-2",
+      "numero": "EJE 2",
+      "titulo": "Educación STEAM",
+      "descripcion": "Abriendo oportunidades para más mujeres jóvenes en ciencia, tecnología, ingeniería, artes y matemáticas en los niveles de Educación Media Superior y Superior.",
+      "icono": "dna",
+      "color": "#0284c7",
+      "imagen": "/uploads/panel-educacion-steam.jpg"
+    },
+    {
+      "id": "eje-3",
+      "numero": "EJE 3",
+      "titulo": "Empoderamiento y Liderazgo",
+      "descripcion": "Impulsando redes de colaboración, mentoría científica, equidad y reconocimiento a mujeres investigadoras, docentes y estudiantes líderes en el estado.",
+      "icono": "rocket",
+      "color": "#be185d",
+      "imagen": "/uploads/panel-liderazgo-mentoria.jpg"
+    }
+  ],
+  "programa": [
+    {
+      "id": "prog-1",
+      "bloque": "Recepción y Registro",
+      "turno": "recepcion",
+      "horario": "09:00 – 09:30 h",
+      "duracion": "30 min",
+      "actividad": "Llegada y recepción del Comité Organizador.",
+      "detalle": "Instalación de mesas de acreditación, pruebas de audio/video y logística general en el Auditorio José Joaquín de Herrera.",
+      "icono": "users"
+    },
+    {
+      "id": "prog-2",
+      "bloque": "Recepción y Registro",
+      "turno": "recepcion",
+      "horario": "09:30 – 10:00 h",
+      "duracion": "30 min",
+      "actividad": "Recepción y registro de alumnas, maestras e invitadas.",
+      "detalle": "Acreditación de asistencia, entrega de gafetes y bienvenida a instituciones de Educación Media Superior y Superior.",
+      "icono": "clipboard"
+    },
+    {
+      "id": "prog-3",
+      "bloque": "Primer Turno | 10:00 a 12:45 Horas",
+      "turno": "turno1",
+      "horario": "10:00 – 10:15 h",
+      "duracion": "15 min",
+      "actividad": "Palabras de bienvenida e inauguración del primer turno.",
+      "detalle": "Ceremonia protocolaria de apertura a cargo del Comité Organizador MIISTEG e invitadas de honor.",
+      "icono": "podium"
+    },
+    {
+      "id": "prog-4",
+      "bloque": "Primer Turno | 10:00 a 12:45 Horas",
+      "turno": "turno1",
+      "horario": "10:15 – 11:35 h",
+      "duracion": "1 h 20 min",
+      "actividad": "Primera Conferencia Magistral (1 hora 20 minutos).",
+      "detalle": "Conferencia magistral enfocada en ciencia aplicada, saberes locales y el papel estratégico de las mujeres científicas en Guerrero.",
+      "icono": "speaker"
+    },
+    {
+      "id": "prog-5",
+      "bloque": "Primer Turno | 10:00 a 12:45 Horas",
+      "turno": "turno1",
+      "horario": "11:35 – 12:30 h",
+      "duracion": "55 min",
+      "actividad": "Primer Panel (Participación de panelistas e interacción con el público).",
+      "detalle": "Mesa de diálogo sobre Educación STEAM y vocaciones científicas en Educación Media Superior y Superior.",
+      "icono": "panel"
+    },
+    {
+      "id": "prog-6",
+      "bloque": "Primer Turno | 10:00 a 12:45 Horas",
+      "turno": "turno1",
+      "horario": "12:30 – 12:45 h",
+      "duracion": "15 min",
+      "actividad": "Palabras de cierre y entrega de reconocimientos.",
+      "detalle": "Entrega de constancias y distinciones a conferencistas y panelistas del primer turno.",
+      "icono": "award"
+    },
+    {
+      "id": "prog-7",
+      "bloque": "Segundo Turno | 13:00 a 16:00 Horas",
+      "turno": "turno2",
+      "horario": "13:00 – 13:15 h",
+      "duracion": "15 min",
+      "actividad": "Palabras de bienvenida e inauguración del segundo turno.",
+      "detalle": "Recepción de contingentes vespertinos y mensaje de apertura del segundo bloque académico.",
+      "icono": "podium"
+    },
+    {
+      "id": "prog-8",
+      "bloque": "Segundo Turno | 13:00 a 16:00 Horas",
+      "turno": "turno2",
+      "horario": "13:15 – 14:35 h",
+      "duracion": "1 h 20 min",
+      "actividad": "Segunda Conferencia Magistral (1 hora 20 minutos).",
+      "detalle": "Conferencia magistral sobre tecnologías emergentes, inteligencia artificial, innovación y liderazgo femenino.",
+      "icono": "speaker"
+    },
+    {
+      "id": "prog-9",
+      "bloque": "Segundo Turno | 13:00 a 16:00 Horas",
+      "turno": "turno2",
+      "horario": "14:35 – 15:35 h",
+      "duracion": "1 h",
+      "actividad": "Segundo Panel (Participación de panelistas e interacción con el público).",
+      "detalle": "Diálogo intergeneracional: redes de mentoría, retos y oportunidades de las mujeres investigadoras y tecnólogas en Guerrero.",
+      "icono": "panel"
+    },
+    {
+      "id": "prog-10",
+      "bloque": "Segundo Turno | 13:00 a 16:00 Horas",
+      "turno": "turno2",
+      "horario": "15:35 – 16:00 h",
+      "duracion": "25 min",
+      "actividad": "Palabras de cierre, entrega de reconocimientos y fotografía oficial.",
+      "detalle": "Clausura solemne del 1.er Foro Estatal MIISTEG, entrega de distinciones y toma de fotografía oficial conmemorativa.",
+      "icono": "award"
+    }
+  ],
+  "ponencias": [
+    {
+      "id": "pon-1",
+      "titulo": "Primera Conferencia Magistral: Ciencia con Impacto Social y Saberes Locales en Guerrero",
+      "tipo": "Conferencia Magistral",
+      "ponente": "Dra. Elena Guadalupe Morales Ríos",
+      "institucion": "Red Estatal de Investigadoras MIISTEG / Educación Superior",
+      "eje": "EJE 1",
+      "turno": "Primer Turno",
+      "horario": "10:15 – 11:35 h",
+      "resumen": "Análisis de proyectos científicos y biotecnológicos liderados por mujeres guerrerenses orientados a la sustentabilidad, salud comunitaria, agroecología y aprovechamiento de saberes locales para transformar nuestras regiones.",
+      "imagen": "/uploads/ponencia-saberes-locales.jpg",
+      "documentoUrl": "#programa",
+      "videoUrl": ""
+    },
+    {
+      "id": "pon-2",
+      "titulo": "Primer Panel: Educación STEAM en Media Superior y Superior — Vocaciones Científicas",
+      "tipo": "Panel de Expertas",
+      "ponente": "Docentes, Investigadoras y Alumnas Destacadas en STEAM",
+      "institucion": "Instituciones de Educación Media Superior y Superior de Guerrero",
+      "eje": "EJE 2",
+      "turno": "Primer Turno",
+      "horario": "11:35 – 12:30 h",
+      "resumen": "Espacio interactivo con participación de panelistas y preguntas del público sobre cómo impulsar el talento de jóvenes estudiantes en robótica, química, ingeniería, artes y matemáticas desde el bachillerato hasta el posgrado.",
+      "imagen": "/uploads/panel-educacion-steam.jpg",
+      "documentoUrl": "#programa",
+      "videoUrl": ""
+    },
+    {
+      "id": "pon-3",
+      "titulo": "Segunda Conferencia Magistral: Innovación Tecnológica, IA y Liderazgo Femenino",
+      "tipo": "Conferencia Magistral",
+      "ponente": "Dra. Invitada Magistral (Turno Vespertino)",
+      "institucion": "Red MIISTEG — Ciencia, Tecnología e Innovación",
+      "eje": "EJE 3",
+      "turno": "Segundo Turno",
+      "horario": "13:15 – 14:35 h",
+      "resumen": "Conferencia magistral dedicada a la transformación digital, inteligencia artificial, ciencia de datos y estrategias de liderazgo para consolidar la presencia de las mujeres en la toma de decisiones científicas.",
+      "imagen": "/uploads/ponencia-ia-tecnologia.jpg",
+      "documentoUrl": "#programa",
+      "videoUrl": ""
+    },
+    {
+      "id": "pon-4",
+      "titulo": "Segundo Panel: Redes de Colaboración, Mentoría y Empoderamiento Científico",
+      "tipo": "Panel de Expertas",
+      "ponente": "Mtra. Yammel Anilú Martínez Saavedra y Comité MIISTEG",
+      "institucion": "MIISTEG — Mujeres Investigadoras de Guerrero",
+      "eje": "EJE 3",
+      "turno": "Segundo Turno",
+      "horario": "14:35 – 15:35 h",
+      "resumen": "Construcción de agendas colaborativas entre bachilleratos, universidades y centros de investigación del estado de Guerrero para impulsar becas, publicaciones conjuntas, mentoría y visibilidad del trabajo científico femenino.",
+      "imagen": "/uploads/panel-liderazgo-mentoria.jpg",
+      "documentoUrl": "#programa",
+      "videoUrl": ""
+    }
+  ],
+  "videos": [
+    {
+      "id": "vid-1",
+      "titulo": "Transmisión Oficial — 1.er Foro Estatal de Mujeres en la Ciencia y Tecnología (MIISTEG)",
+      "categoria": "Transmisión en Vivo / Magistral",
+      "descripcion": "Sigue las conferencias magistrales y paneles de diálogo desde el Auditorio José Joaquín de Herrera en Chilpancingo de los Bravo, Guerrero.",
+      "url": "https://www.youtube.com/embed/jfKfPfyJRdk",
+      "duracion": "En vivo / Archivo",
+      "ponente": "Comité Organizador MIISTEG"
+    },
+    {
+      "id": "vid-2",
+      "titulo": "Cápsula Especial: Mujeres Innovando el Futuro de Guerrero (Media Superior y Superior)",
+      "categoria": "Divulgación STEAM",
+      "descripcion": "Mensaje de invitación e introducción a los tres grandes ejes temáticos del 1.er Foro Estatal MIISTEG.",
+      "url": "https://www.youtube.com/embed/21X5lGlDOfg",
+      "duracion": "05:30 min",
+      "ponente": "Red MIISTEG Guerrero"
+    }
+  ],
+  "galeria": [
+    {
+      "id": "gal-1",
+      "titulo": "Investigación Aplicada y Saberes Locales en Guerrero",
+      "categoria": "Eje 1 • Investigación",
+      "descripcion": "Mujeres científicas guerrerenses desarrollando investigación biotecnológica y ambiental vinculada con la biodiversidad del estado.",
+      "url": "/uploads/ponencia-saberes-locales.jpg",
+      "fecha": "2026-11-22"
+    },
+    {
+      "id": "gal-2",
+      "titulo": "Jóvenes en Laboratorios STEAM (Media Superior y Superior)",
+      "categoria": "Eje 2 • Educación STEAM",
+      "descripcion": "Alumnas y docentes colaborando en proyectos de robótica, química, matemáticas e innovación tecnológica.",
+      "url": "/uploads/panel-educacion-steam.jpg",
+      "fecha": "2026-11-22"
+    },
+    {
+      "id": "gal-3",
+      "titulo": "Conferencias Magistrales en Innovación e Inteligencia Artificial",
+      "categoria": "Conferencias Magistrales",
+      "descripcion": "Divulgación científica de frontera y transformación digital liderada por investigadoras.",
+      "url": "/uploads/ponencia-ia-tecnologia.jpg",
+      "fecha": "2026-11-22"
+    },
+    {
+      "id": "gal-4",
+      "titulo": "Mesas de Diálogo y Redes de Mentoría Científica",
+      "categoria": "Eje 3 • Liderazgo",
+      "descripcion": "Encuentro intergeneracional de investigadoras, docentes y alumnas en el recinto del foro.",
+      "url": "/uploads/panel-liderazgo-mentoria.jpg",
+      "fecha": "2026-11-22"
+    }
+  ],
+  "registros": [
+    {
+      "id": "reg-1",
+      "folio": "MIISTEG-2026-0001",
+      "nombre": "Mtra. Yammel Anilú Martínez Saavedra",
+      "email": "mujeresinvestigadorasguerrero@gmail.com",
+      "telefono": "744 424 5666",
+      "institucion": "Comité Organizador MIISTEG Guerrero",
+      "nivel": "Educación Superior / Investigación",
+      "rol": "Comité Organizador",
+      "turno": "Ambos Turnos (09:30 a 16:00 h)",
+      "eje": "EJE 3",
+      "ponenciaTitulo": "Coordinación General del 1.er Foro Estatal MIISTEG",
+      "constanciaAprobada": true,
+      "fechaRegistro": "2026-11-19T09:00:00.000Z"
+    },
+    {
+      "id": "reg-2",
+      "folio": "MIISTEG-2026-0002",
+      "nombre": "Dra. Elena Guadalupe Morales Ríos",
+      "email": "elena.morales@uagro.mx",
+      "telefono": "747 112 3456",
+      "institucion": "Universidad Autónoma de Guerrero (UAGro)",
+      "nivel": "Educación Superior",
+      "rol": "Ponente Magistral",
+      "turno": "Primer Turno (10:00 a 12:45 h)",
+      "eje": "EJE 1",
+      "ponenciaTitulo": "Ciencia con Impacto Social y Saberes Locales en Guerrero",
+      "constanciaAprobada": true,
+      "fechaRegistro": "2026-11-19T09:15:00.000Z"
+    },
+    {
+      "id": "reg-3",
+      "folio": "MIISTEG-2026-0003",
+      "nombre": "Ing. Valeria Sofía Castro Hernández",
+      "email": "valeria.castro@itchilpancingo.edu.mx",
+      "telefono": "747 198 7654",
+      "institucion": "Tecnológico Nacional de México Campus Chilpancingo",
+      "nivel": "Educación Superior",
+      "rol": "Panelista",
+      "turno": "Segundo Turno (13:00 a 16:00 h)",
+      "eje": "EJE 2",
+      "ponenciaTitulo": "Educación STEAM y Mentoría Tecnológica para Jóvenes Guerrerenses",
+      "constanciaAprobada": true,
+      "fechaRegistro": "2026-11-19T09:20:00.000Z"
+    },
+    {
+      "id": "reg-4",
+      "folio": "MIISTEG-2026-0004",
+      "nombre": "Mariana Ximena Salgado Bello",
+      "email": "mariana.salgado@cbta.edu.mx",
+      "telefono": "747 145 8899",
+      "institucion": "Educación Media Superior — Chilpancingo",
+      "nivel": "Educación Media Superior",
+      "rol": "Asistente",
+      "turno": "Primer Turno (10:00 a 12:45 h)",
+      "eje": "EJE 2",
+      "ponenciaTitulo": "",
+      "constanciaAprobada": true,
+      "fechaRegistro": "2026-11-19T09:30:00.000Z"
+    }
+  ]
+}

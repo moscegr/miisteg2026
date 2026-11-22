@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MIISTEG | 1.er Foro Estatal de Mujeres en la Ciencia y Tecnología — Guerrero</title>
+  <link rel="icon" type="image/png" href="/uploads/logo-miisteg-transparent.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+  <!-- Barra de Navegación con el Logo Oficial Extraído -->
+  <header class="navbar">
+    <a href="#" class="brand">
+      <div class="brand-logo-wrap">
+        <img src="/uploads/logo-miisteg-transparent.png" alt="Logo Oficial MIISTEG" class="brand-logo-img" />
+      </div>
+      <div class="brand-text">
+        <span class="brand-siglas" id="navSiglas">MIISTEG</span>
+        <span class="brand-sub">Mujeres Investigadoras, Innovadoras y Tecnológicas de Guerrero</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#ejes">Ejes Temáticos</a></li>
+      <li><a href="#programa">Programa</a></li>
+      <li><a href="#ponencias">Ponencias</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#registro">Registro</a></li>
+      <li><a href="#constancias">Constancias</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#registro" class="btn btn-primary btn-sm">Registrarme</a>
+      <button type="button" class="btn btn-admin" onclick="openAdminModal()">
+        ⚙️ Panel Admin
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Principal (Sin repetir carteles, usando la identidad e ilustración extraída) -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="badge-lema" id="heroLema">
+          🔬 ¡LA CIENCIA Y LA INNOVACIÓN TIENEN VOZ DE MUJER EN GUERRERO!
+        </div>
+        <h1 class="hero-title">
+          <span class="edicion-pill">1.er</span>
+          <span class="gradient-text" id="heroTitulo">FORO ESTATAL DE MUJERES EN LA CIENCIA Y TECNOLOGÍA</span>
+        </h1>
+        <p class="hero-subtitle" id="heroSubtitulo">
+          Mujeres Innovando el Futuro de Guerrero: Media Superior y Superior.
+        </p>
+        <p class="hero-desc" id="heroDescripcion">
+          Un espacio de encuentro, diálogo y colaboración para reconocer el talento de las mujeres que investigan, innovan, enseñan y transforman nuestra sociedad.
+        </p>
+
+        <div class="hero-meta-cards">
+          <div class="meta-pill">
+            <div class="meta-icon">📅</div>
+            <div class="meta-info">
+              <small>Fecha del Evento</small>
+              <strong id="heroFecha">7 de diciembre de 2026</strong>
+            </div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-icon">📍</div>
+            <div class="meta-info">
+              <small>Sede Oficial</small>
+              <strong id="heroSede">Auditorio José Joaquín de Herrera</strong>
+            </div>
+          </div>
+          <div class="meta-pill">
+            <div class="meta-icon">🕘</div>
+            <div class="meta-info">
+              <small>Chilpancingo, Gro.</small>
+              <strong id="heroHorario">9:30 a 16:00 hrs</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href="#registro" class="btn btn-primary">✍️ Registro en Línea</a>
+          <a href="#programa" class="btn btn-teal">📋 Ver Programa General</a>
+          <a href="#constancias" class="btn btn-outline">🎓 Descargar Constancia</a>
+        </div>
+
+        <div class="countdown-bar" id="countdownBar">
+          <div class="countdown-box"><span id="cdDays">00</span><small>Días</small></div>
+          <div class="countdown-box"><span id="cdHours">00</span><small>Horas</small></div>
+          <div class="countdown-box"><span id="cdMins">00</span><small>Minutos</small></div>
+          <div class="countdown-box"><span id="cdSecs">00</span><small>Segundos</small></div>
+          <div style="font-size:0.82rem; color:var(--text-muted); max-width:210px;">
+            Cuenta regresiva para el inicio del foro en Chilpancingo de los Bravo, Guerrero.
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta de Identidad Oficial MIISTEG con Logo e Ilustración Extraída -->
+      <div class="hero-visual">
+        <div class="identity-showcase">
+          <div class="identity-floating-badge">
+            <img src="/uploads/logo-miisteg-transparent.png" alt="Emblema MIISTEG" />
+            <div>
+              <strong>RED ESTATAL MIISTEG</strong>
+              <span>Ciencia • Tecnología • Innovación • Liderazgo</span>
+            </div>
+          </div>
+          <div class="identity-art-wrap">
+            <img
+              id="heroShowcaseImg"
+              src="/uploads/ilustracion-miisteg.png"
+              alt="Emblema Oficial MIISTEG — Mujeres Investigadoras de Guerrero"
+            />
+          </div>
+          <div class="identity-stats-row">
+            <div class="identity-stat">
+              <strong>3 Ejes</strong>
+              <small>Estratégicos</small>
+            </div>
+            <div class="identity-stat">
+              <strong>2 Turnos</strong>
+              <small>Matutino y Vespertino</small>
+            </div>
+            <div class="identity-stat">
+              <strong>STEAM</strong>
+              <small>Media Superior y Superior</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 1: Ejes de Participación con Imágenes Contextuales -->
+  <section class="section" id="ejes">
+    <div class="section-header">
+      <span class="section-tag">MIISTEG • Ciencia • Tecnología • Innovación • Liderazgo</span>
+      <h2 class="section-title">Tres Grandes Ejes de Participación</h2>
+      <p class="section-subtitle" id="significadoSiglasText">
+        Mujeres Investigadoras, Innovadoras, Siempre Tecnológicas y Empoderadas de Guerrero — Articulando el talento de Educación Media Superior y Superior.
+      </p>
+    </div>
+
+    <div class="ejes-grid" id="ejesContainer"></div>
+  </section>
+
+  <!-- Sección 2: Programa General Interactivo -->
+  <section class="section" id="programa">
+    <div class="section-header">
+      <span class="section-tag">Cronograma Oficial • 7 de Diciembre de 2026</span>
+      <h2 class="section-title">Programa General del Foro</h2>
+      <p class="section-subtitle">
+        Actividades organizadas en Recepción, Primer Turno (Matutino) y Segundo Turno (Vespertino) en el Auditorio José Joaquín de Herrera.
+      </p>
+    </div>
+
+    <div class="programa-controls">
+      <div class="filter-pills" id="programaFilterPills">
+        <button type="button" class="filter-pill active" onclick="filterPrograma('todos', this)">Todo el Programa (09:00 – 16:00 h)</button>
+        <button type="button" class="filter-pill" onclick="filterPrograma('recepcion', this)">Recepción (09:00 – 10:00 h)</button>
+        <button type="button" class="filter-pill" onclick="filterPrograma('turno1', this)">Primer Turno (10:00 – 12:45 h)</button>
+        <button type="button" class="filter-pill" onclick="filterPrograma('turno2', this)">Segundo Turno (13:00 – 16:00 h)</button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-outline btn-sm" onclick="openLightbox('/uploads/programa-oficial.jpg', 'Versión Imprimible del Programa General')">
+          📄 Versión Imprimible del Programa
+        </button>
+      </div>
+    </div>
+
+    <div id="programaContainer"></div>
+  </section>
+
+  <!-- Sección 3: Ponencias, Conferencias Magistrales y Paneles -->
+  <section class="section" id="ponencias">
+    <div class="section-header">
+      <span class="section-tag">Conferencias Magistrales y Paneles de Expertas</span>
+      <h2 class="section-title">Ponencias y Mesas de Diálogo</h2>
+      <p class="section-subtitle">
+        Consulta la información detallada de las conferencias magistrales, paneles interactivos y materiales descargables por eje temático.
+      </p>
+    </div>
+
+    <div class="programa-controls" style="justify-content:center; margin-bottom:2rem;">
+      <div class="filter-pills">
+        <button type="button" class="filter-pill active" onclick="filterPonencias('TODOS', this)">Todos los Ejes</button>
+        <button type="button" class="filter-pill" onclick="filterPonencias('EJE 1', this)">Eje 1: Investigación y Saberes Locales</button>
+        <button type="button" class="filter-pill" onclick="filterPonencias('EJE 2', this)">Eje 2: Educación STEAM</button>
+        <button type="button" class="filter-pill" onclick="filterPonencias('EJE 3', this)">Eje 3: Empoderamiento y Liderazgo</button>
+      </div>
+    </div>
+
+    <div class="cards-grid" id="ponenciasContainer"></div>
+  </section>
+
+  <!-- Sección 4: Videos y Transmisiones -->
+  <section class="section" id="videos">
+    <div class="section-header">
+      <span class="section-tag">Videoteca y Transmisión Digital</span>
+      <h2 class="section-title">Videos, Conferencias y Cápsulas STEAM</h2>
+      <p class="section-subtitle">
+        Revive las conferencias magistrales, cápsulas de divulgación y transmisiones en directo del foro.
+      </p>
+    </div>
+
+    <div class="cards-grid" id="videosContainer"></div>
+  </section>
+
+  <!-- Sección 5: Galería Multimedia con Imágenes Contextuales -->
+  <section class="section" id="galeria">
+    <div class="section-header">
+      <span class="section-tag">Memoria Visual y Difusión Científica</span>
+      <h2 class="section-title">Galería Fotográfica del Foro</h2>
+      <p class="section-subtitle">
+        Explora las actividades científicas, laboratorios STEAM, conferencias magistrales y mesas de diálogo de las mujeres investigadoras de Guerrero.
+      </p>
+    </div>
+
+    <div class="galeria-grid" id="galeriaContainer"></div>
+  </section>
+
+  <!-- Sección 6: Registro en Línea e Informes -->
+  <section class="section" id="registro">
+    <div class="section-header">
+      <span class="section-tag">Acreditación Gratuita • Media Superior y Superior</span>
+      <h2 class="section-title">Registro en Línea al 1.er Foro Estatal</h2>
+      <p class="section-subtitle">
+        Regístrate como alumna, maestra, investigadora, ponente o asistente para obtener tu folio oficial de acceso y tu constancia digital con valor curricular.
+      </p>
+    </div>
+
+    <div class="dual-panel">
+      <!-- Formulario de Registro -->
+      <div class="glass-panel">
+        <h3 style="font-size:1.35rem; font-weight:800; margin-bottom:0.4rem;">Formulario de Inscripción</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1.4rem;">
+          Capture su nombre completo con grados o títulos exactamente como desea que aparezca en su constancia oficial.
+        </p>
+
+        <form id="registroForm" onsubmit="submitRegistro(event)">
+          <div class="form-grid">
+            <div class="form-group full">
+              <label for="regNombre">Nombre Completo (para Constancia Oficial) *</label>
+              <input type="text" id="regNombre" class="form-control" placeholder="Ej. Dra. / Mtra. / Ing. / Alumna María Fernanda López..." required />
+            </div>
+
+            <div class="form-group">
+              <label for="regEmail">Correo Electrónico *</label>
+              <input type="email" id="regEmail" class="form-control" placeholder="correo@institucion.edu.mx" required />
+            </div>
+
+            <div class="form-group">
+              <label for="regTelefono">Teléfono / WhatsApp *</label>
+              <input type="tel" id="regTelefono" class="form-control" placeholder="Ej. 744 424 5666" required />
+            </div>
+
+            <div class="form-group full">
+              <label for="regInstitucion">Institución Educativa, Dependencia o Centro de Investigación *</label>
+              <input type="text" id="regInstitucion" class="form-control" placeholder="Ej. UAGro, TecNM Chilpancingo, CBTis, COBACH, CONALEP..." required />
+            </div>
+
+            <div class="form-group">
+              <label for="regNivel">Nivel Educativo / Sector</label>
+              <select id="regNivel" class="form-control">
+                <option value="Educación Media Superior">Educación Media Superior</option>
+                <option value="Educación Superior" selected>Educación Superior</option>
+                <option value="Posgrado / Centro de Investigación">Posgrado / Centro de Investigación</option>
+                <option value="Sector Público / Sociedad Civil">Sector Público / Sociedad Civil</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="regRol">Modalidad de Participación</label>
+              <select id="regRol" class="form-control">
+                <option value="Asistente">Asistente (Alumna / Estudiante)</option>
+                <option value="Docente / Investigadora Asistente">Docente / Maestra / Investigadora</option>
+                <option value="Ponente Magistral">Ponente Magistral</option>
+                <option value="Panelista">Panelista</option>
+                <option value="Invitada Especial">Invitada Especial</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="regTurno">Turno de Asistencia</label>
+              <select id="regTurno" class="form-control">
+                <option value="Ambos Turnos (09:30 a 16:00 h)">Ambos Turnos (09:30 a 16:00 h)</option>
+                <option value="Primer Turno (10:00 a 12:45 h)">Primer Turno (10:00 a 12:45 h)</option>
+                <option value="Segundo Turno (13:00 a 16:00 h)">Segundo Turno (13:00 a 16:00 h)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="regEje">Eje Temático de Mayor Interés</label>
+              <select id="regEje" class="form-control">
+                <option value="EJE 1">Eje 1: Investigación de Impacto y Saberes Locales</option>
+                <option value="EJE 2">Eje 2: Educación STEAM</option>
+                <option value="EJE 3">Eje 3: Empoderamiento y Liderazgo</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label for="regPonencia">Título de Ponencia o Proyecto (Opcional, sólo para ponentes/panelistas)</label>
+              <input type="text" id="regPonencia" class="form-control" placeholder="Dejar en blanco si asiste como participante general" />
+            </div>
+
+            <div class="form-group full" style="margin-top:0.5rem;">
+              <button type="submit" class="btn btn-primary" style="width:100%; padding:0.9rem; font-size:1rem;">
+                ✅ Completar Registro y Generar Folio Oficial
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Resultado del Registro -->
+        <div id="registroExitoBox" style="display:none; margin-top:1.5rem; padding:1.35rem; border-radius:14px; background:rgba(13, 148, 136, 0.2); border:1px solid var(--teal-500);"></div>
+      </div>
+
+      <!-- Tarjeta de Sede e Informes Oficiales (Con Logo Extraído, sin repetir el cartel) -->
+      <div class="glass-panel">
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem; padding-bottom:1.1rem; border-bottom:1px solid var(--border-glass);">
+          <div class="brand-logo-wrap" style="width:68px; height:68px;">
+            <img src="/uploads/logo-miisteg-transparent.png" alt="Logo MIISTEG" style="width:56px; height:56px; object-fit:contain;" />
+          </div>
+          <div>
+            <span class="section-tag" style="margin-bottom:0.25rem;">Sede Oficial e Informes</span>
+            <h3 style="font-size:1.25rem; font-weight:800;">Comité Organizador MIISTEG</h3>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:0.95rem; margin-bottom:1.5rem;">
+          <div class="meta-pill">
+            <div class="meta-icon">🏛️</div>
+            <div class="meta-info">
+              <small>Recinto Sede</small>
+              <strong id="infoSede">Auditorio José Joaquín de Herrera</strong>
+              <span style="display:block; font-size:0.82rem; color:var(--text-muted);" id="infoCiudad">Chilpancingo de los Bravo, Guerrero.</span>
+            </div>
+          </div>
+
+          <div class="meta-pill">
+            <div class="meta-icon">👩‍🔬</div>
+            <div class="meta-info">
+              <small>Coordinación General e Informes</small>
+              <strong id="infoContactoNombre">Mtra. Yammel Anilú Martínez Saavedra</strong>
+              <span style="display:block; font-size:0.82rem; color:var(--text-muted);">Mujeres Investigadoras de Guerrero</span>
+            </div>
+          </div>
+
+          <div class="meta-pill">
+            <div class="meta-icon">📞</div>
+            <div class="meta-info">
+              <small>Teléfono y WhatsApp</small>
+              <strong><a href="tel:7444245666" id="infoTelefono" style="color:#22d3ee; text-decoration:none;">744 424 5666</a></strong>
+            </div>
+          </div>
+
+          <div class="meta-pill">
+            <div class="meta-icon">✉️</div>
+            <div class="meta-info">
+              <small>Correo Electrónico Oficial</small>
+              <strong><a href="mailto:mujeresinvestigadorasguerrero@gmail.com" id="infoEmail" style="color:#f472b6; text-decoration:none; word-break:break-all;">mujeresinvestigadorasguerrero@gmail.com</a></strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resumen de Horarios por Turno -->
+        <div class="turnos-summary-box">
+          <h4>Horarios de Acreditación por Turno</h4>
+          <div class="turno-mini-row">
+            <span class="dot-recepcion"></span>
+            <div>
+              <strong>Recepción y Registro General:</strong>
+              <span>09:00 a 10:00 hrs</span>
+            </div>
+          </div>
+          <div class="turno-mini-row">
+            <span class="dot-turno1"></span>
+            <div>
+              <strong>Primer Turno (Matutino):</strong>
+              <span>10:00 a 12:45 hrs</span>
+            </div>
+          </div>
+          <div class="turno-mini-row">
+            <span class="dot-turno2"></span>
+            <div>
+              <strong>Segundo Turno (Vespertino):</strong>
+              <span>13:00 a 16:00 hrs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 7: Módulo de Constancias Digitales -->
+  <section class="section" id="constancias">
+    <div class="section-header">
+      <span class="section-tag">Emisión Automatizada con Logo Oficial y Folio</span>
+      <h2 class="section-title">Consulta y Descarga de Constancias</h2>
+      <p class="section-subtitle">
+        Ingresa tu Folio de Registro, Correo Electrónico o Nombre Completo para generar y descargar tu constancia oficial del 1.er Foro Estatal MIISTEG.
+      </p>
+    </div>
+
+    <div class="glass-panel" style="max-width:980px; margin:0 auto;">
+      <div class="constancia-search-box">
+        <input
+          type="text"
+          id="constanciaQuery"
+          class="form-control"
+          placeholder="Ingresa tu Folio (ej. MIISTEG-2026-0001), Correo o Nombre..."
+          onkeydown="if(event.key==='Enter') buscarConstancia()"
+        />
+        <button type="button" class="btn btn-primary" onclick="buscarConstancia()">
+          🔍 Buscar Constancia
+        </button>
+      </div>
+
+      <div class="quick-folios">
+        <span style="font-size:0.8rem; color:var(--text-muted);">Ejemplos rápidos para probar:</span>
+        <button type="button" class="quick-folio-chip" onclick="probarFolio('MIISTEG-2026-0001')">MIISTEG-2026-0001 (Coordinadora)</button>
+        <button type="button" class="quick-folio-chip" onclick="probarFolio('MIISTEG-2026-0002')">MIISTEG-2026-0002 (Ponente Magistral)</button>
+        <button type="button" class="quick-folio-chip" onclick="probarFolio('MIISTEG-2026-0003')">MIISTEG-2026-0003 (Panelista)</button>
+        <button type="button" class="quick-folio-chip" onclick="probarFolio('MIISTEG-2026-0004')">MIISTEG-2026-0004 (Asistente)</button>
+      </div>
+
+      <div id="constanciaResultadosMsg"></div>
+
+      <div class="certificate-canvas-container" id="certificatePreviewWrap" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; margin-bottom:1rem;">
+          <div style="text-align:left;">
+            <strong id="certPreviewTitle" style="color:var(--gold-400); font-size:1.05rem;">Vista Previa de Constancia Oficial</strong>
+            <p style="font-size:0.82rem; color:var(--text-muted);">Documento digital validado con el emblema oficial MIISTEG.</p>
+          </div>
+          <div style="display:flex; gap:0.65rem; flex-wrap:wrap;">
+            <button type="button" class="btn btn-teal btn-sm" onclick="descargarConstanciaPNG()">
+              ⬇️ Descargar Imagen HD (PNG)
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="imprimirConstanciaPDF()">
+              🖨️ Imprimir / Guardar PDF
+            </button>
+          </div>
+        </div>
+        <canvas id="certCanvas" width="1400" height="990"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de Página -->
+  <footer class="footer">
+    <div class="footer-pillars">
+      <div class="pillar-item">
+        <div class="meta-icon">💡</div>
+        <div>
+          <span>Inspiramos</span>
+          <strong>MENTES</strong>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="meta-icon" style="background:rgba(13,148,136,0.22); color:#2dd4bf;">👥</div>
+        <div>
+          <span>Transformamos</span>
+          <strong>COMUNIDADES</strong>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="meta-icon" style="background:rgba(245,158,11,0.22); color:#fbbf24;">⚙️</div>
+        <div>
+          <span>Construimos</span>
+          <strong>FUTURO</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="hashtag-cloud" id="footerHashtags"></div>
+
+    <div style="text-align:center; color:var(--text-muted); font-size:0.86rem; display:flex; flex-direction:column; align-items:center; gap:0.6rem;">
+      <img src="/uploads/logo-miisteg-transparent.png" alt="Logo MIISTEG" style="width:52px; height:52px; object-fit:contain; background:rgba(255,255,255,0.92); padding:5px; border-radius:50%;" />
+      <p><strong style="color:#fff;">MIISTEG</strong> — Mujeres Investigadoras, Innovadoras, Siempre Tecnológicas y Empoderadas de Guerrero.</p>
+      <p>1.er Foro Estatal de Mujeres en la Ciencia y Tecnología • 7 de diciembre de 2026 • Auditorio José Joaquín de Herrera, Chilpancingo de los Bravo, Guerrero.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal para Imágenes -->
+  <div class="modal-overlay" id="lightboxModal" onclick="if(event.target===this) closeLightbox()">
+    <div class="modal-card" style="max-width:920px; text-align:center;">
+      <button type="button" class="modal-close" onclick="closeLightbox()">✕</button>
+      <h3 id="lightboxTitle" style="margin-bottom:1rem; font-size:1.15rem;">Vista de Imagen</h3>
+      <img id="lightboxImg" src="" alt="Vista ampliada" style="max-width:100%; max-height:74vh; border-radius:12px;" />
+      <div style="margin-top:1rem;">
+        <a id="lightboxDownload" href="#" download class="btn btn-primary btn-sm">⬇️ Descargar Imagen Original</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal del Panel de Administración (CMS Persistente en MongoDB) -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal-card">
+      <button type="button" class="modal-close" onclick="closeAdminModal()">✕</button>
+
+      <!-- Vista de Acceso Admin -->
+      <div id="adminLoginView" style="max-width:440px; margin:1.5rem auto; text-align:center;">
+        <img src="/uploads/logo-miisteg-transparent.png" alt="Logo MIISTEG" style="width:74px; height:74px; object-fit:contain; background:rgba(255,255,255,0.94); padding:8px; border-radius:50%; margin-bottom:0.85rem;" />
+        <br/>
+        <span class="section-tag">Administración de Plataforma MIISTEG</span>
+        <h3 style="font-size:1.5rem; font-weight:800; margin-bottom:0.5rem;">Acceso al Panel Administrable</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1.25rem;">
+          Gestiona el programa, sube ponencias, videos, fotografías a la galería, administra registros y aprueba constancias con persistencia en MongoDB.
+        </p>
+        <div class="form-group" style="text-align:left; margin-bottom:1rem;">
+          <label for="adminPassInput">Contraseña de Administrador</label>
+          <input type="password" id="adminPassInput" class="form-control" value="miisteg2026" onkeydown="if(event.key==='Enter') loginAdmin()" />
+          <small style="color:var(--gold-400); font-size:0.78rem;">Clave por defecto: <strong>miisteg2026</strong></small>
+        </div>
+        <button type="button" class="btn btn-primary" style="width:100%;" onclick="loginAdmin()">
+          🔐 Entrar al Panel de Control
+        </button>
+      </div>
+
+      <!-- Vista Principal del CMS -->
+      <div id="adminDashboardView" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.2rem; padding-right:2.5rem;">
+          <div>
+            <span class="section-tag" id="storageStatusBadge">CMS Persistente • MongoDB</span>
+            <h3 style="font-size:1.45rem; font-weight:900;">Panel de Control — 1.er Foro Estatal MIISTEG</h3>
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <button type="button" class="btn btn-teal btn-sm" onclick="exportBackupJSON()">💾 Exportar Respaldo JSON</button>
+          </div>
+        </div>
+
+        <div class="admin-tabs">
+          <button type="button" class="admin-tab active" onclick="switchAdminTab('config', this)">1. Configuración General</button>
+          <button type="button" class="admin-tab" onclick="switchAdminTab('programa', this)">2. Programa</button>
+          <button type="button" class="admin-tab" onclick="switchAdminTab('ponencias', this)">3. Ponencias y Paneles</button>
+          <button type="button" class="admin-tab" onclick="switchAdminTab('videos', this)">4. Videos</button>
+          <button type="button" class="admin-tab" onclick="switchAdminTab('galeria', this)">5. Galería e Imágenes</button>
+          <button type="button" class="admin-tab" onclick="switchAdminTab('registros', this)">6. Registros y Constancias</button>
+        </div>
+
+        <div id="adminTabContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor de Notificaciones Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
