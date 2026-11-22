@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <!-- Barra de Navegación con el Logo Oficial Extraído -->
+  <!-- Barra de Navegación Responsiva con el Logo Oficial Extraído -->
   <header class="navbar">
     <a href="#" class="brand">
       <div class="brand-logo-wrap">
@@ -24,25 +24,37 @@
       </div>
     </a>
 
-    <ul class="nav-links">
-      <li><a href="#ejes">Ejes Temáticos</a></li>
-      <li><a href="#programa">Programa</a></li>
-      <li><a href="#ponencias">Ponencias</a></li>
-      <li><a href="#videos">Videos</a></li>
-      <li><a href="#galeria">Galería</a></li>
-      <li><a href="#registro">Registro</a></li>
-      <li><a href="#constancias">Constancias</a></li>
-    </ul>
+    <button
+      type="button"
+      class="mobile-menu-toggle"
+      id="mobileMenuToggle"
+      aria-label="Abrir menú de navegación"
+      onclick="toggleMobileMenu()"
+    >
+      ☰
+    </button>
 
-    <div class="nav-actions">
-      <a href="#registro" class="btn btn-primary btn-sm">Registrarme</a>
-      <button type="button" class="btn btn-admin" onclick="openAdminModal()">
-        ⚙️ Panel Admin
-      </button>
-    </div>
+    <nav class="nav-collapse" id="navCollapse">
+      <ul class="nav-links" onclick="closeMobileMenu()">
+        <li><a href="#ejes">Ejes Temáticos</a></li>
+        <li><a href="#programa">Programa</a></li>
+        <li><a href="#ponencias">Ponencias</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#registro">Registro</a></li>
+        <li><a href="#constancias">Constancias</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#registro" class="btn btn-primary btn-sm" onclick="closeMobileMenu()">Registrarme</a>
+        <button type="button" class="btn btn-admin" onclick="closeMobileMenu(); openAdminModal()">
+          ⚙️ Panel Admin
+        </button>
+      </div>
+    </nav>
   </header>
 
-  <!-- Hero Principal (Sin repetir carteles, usando la identidad e ilustración extraída) -->
+  <!-- Hero Principal -->
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-content">
@@ -91,11 +103,13 @@
         </div>
 
         <div class="countdown-bar" id="countdownBar">
-          <div class="countdown-box"><span id="cdDays">00</span><small>Días</small></div>
-          <div class="countdown-box"><span id="cdHours">00</span><small>Horas</small></div>
-          <div class="countdown-box"><span id="cdMins">00</span><small>Minutos</small></div>
-          <div class="countdown-box"><span id="cdSecs">00</span><small>Segundos</small></div>
-          <div style="font-size:0.82rem; color:var(--text-muted); max-width:210px;">
+          <div class="countdown-boxes-wrap">
+            <div class="countdown-box"><span id="cdDays">00</span><small>Días</small></div>
+            <div class="countdown-box"><span id="cdHours">00</span><small>Horas</small></div>
+            <div class="countdown-box"><span id="cdMins">00</span><small>Minutos</small></div>
+            <div class="countdown-box"><span id="cdSecs">00</span><small>Segundos</small></div>
+          </div>
+          <div class="countdown-caption">
             Cuenta regresiva para el inicio del foro en Chilpancingo de los Bravo, Guerrero.
           </div>
         </div>
@@ -167,7 +181,7 @@
         <button type="button" class="filter-pill" onclick="filterPrograma('turno1', this)">Primer Turno (10:00 – 12:45 h)</button>
         <button type="button" class="filter-pill" onclick="filterPrograma('turno2', this)">Segundo Turno (13:00 – 16:00 h)</button>
       </div>
-      <div>
+      <div class="programa-print-btn-wrap">
         <button type="button" class="btn btn-outline btn-sm" onclick="openLightbox('/uploads/programa-oficial.jpg', 'Versión Imprimible del Programa General')">
           📄 Versión Imprimible del Programa
         </button>
@@ -321,15 +335,15 @@
         <div id="registroExitoBox" style="display:none; margin-top:1.5rem; padding:1.35rem; border-radius:14px; background:rgba(13, 148, 136, 0.2); border:1px solid var(--teal-500);"></div>
       </div>
 
-      <!-- Tarjeta de Sede e Informes Oficiales (Con Logo Extraído, sin repetir el cartel) -->
+      <!-- Tarjeta de Sede e Informes Oficiales -->
       <div class="glass-panel">
         <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem; padding-bottom:1.1rem; border-bottom:1px solid var(--border-glass);">
-          <div class="brand-logo-wrap" style="width:68px; height:68px;">
-            <img src="/uploads/logo-miisteg-transparent.png" alt="Logo MIISTEG" style="width:56px; height:56px; object-fit:contain;" />
+          <div class="brand-logo-wrap" style="width:64px; height:64px;">
+            <img src="/uploads/logo-miisteg-transparent.png" alt="Logo MIISTEG" style="width:52px; height:52px; object-fit:contain;" />
           </div>
           <div>
             <span class="section-tag" style="margin-bottom:0.25rem;">Sede Oficial e Informes</span>
-            <h3 style="font-size:1.25rem; font-weight:800;">Comité Organizador MIISTEG</h3>
+            <h3 style="font-size:1.2rem; font-weight:800;">Comité Organizador MIISTEG</h3>
           </div>
         </div>
 
@@ -433,12 +447,12 @@
       <div id="constanciaResultadosMsg"></div>
 
       <div class="certificate-canvas-container" id="certificatePreviewWrap" style="display:none;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; margin-bottom:1rem;">
+        <div class="cert-actions-header">
           <div style="text-align:left;">
             <strong id="certPreviewTitle" style="color:var(--gold-400); font-size:1.05rem;">Vista Previa de Constancia Oficial</strong>
             <p style="font-size:0.82rem; color:var(--text-muted);">Documento digital validado con el emblema oficial MIISTEG.</p>
           </div>
-          <div style="display:flex; gap:0.65rem; flex-wrap:wrap;">
+          <div class="cert-actions-btns">
             <button type="button" class="btn btn-teal btn-sm" onclick="descargarConstanciaPNG()">
               ⬇️ Descargar Imagen HD (PNG)
             </button>
@@ -491,7 +505,7 @@
   <div class="modal-overlay" id="lightboxModal" onclick="if(event.target===this) closeLightbox()">
     <div class="modal-card" style="max-width:920px; text-align:center;">
       <button type="button" class="modal-close" onclick="closeLightbox()">✕</button>
-      <h3 id="lightboxTitle" style="margin-bottom:1rem; font-size:1.15rem;">Vista de Imagen</h3>
+      <h3 id="lightboxTitle" style="margin-bottom:1rem; font-size:1.15rem; padding-right:2rem;">Vista de Imagen</h3>
       <img id="lightboxImg" src="" alt="Vista ampliada" style="max-width:100%; max-height:74vh; border-radius:12px;" />
       <div style="margin-top:1rem;">
         <a id="lightboxDownload" href="#" download class="btn btn-primary btn-sm">⬇️ Descargar Imagen Original</a>
@@ -504,19 +518,25 @@
     <div class="modal-card">
       <button type="button" class="modal-close" onclick="closeAdminModal()">✕</button>
 
-      <!-- Vista de Acceso Admin -->
+      <!-- Vista de Acceso Admin (Sin mostrar ni autocompletar la contraseña) -->
       <div id="adminLoginView" style="max-width:440px; margin:1.5rem auto; text-align:center;">
         <img src="/uploads/logo-miisteg-transparent.png" alt="Logo MIISTEG" style="width:74px; height:74px; object-fit:contain; background:rgba(255,255,255,0.94); padding:8px; border-radius:50%; margin-bottom:0.85rem;" />
         <br/>
         <span class="section-tag">Administración de Plataforma MIISTEG</span>
         <h3 style="font-size:1.5rem; font-weight:800; margin-bottom:0.5rem;">Acceso al Panel Administrable</h3>
         <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1.25rem;">
-          Gestiona el programa, sube ponencias, videos, fotografías a la galería, administra registros y aprueba constancias con persistencia en MongoDB.
+          Área exclusiva para el Comité Organizador. Ingresa tu clave de acceso para gestionar el portal.
         </p>
-        <div class="form-group" style="text-align:left; margin-bottom:1rem;">
+        <div class="form-group" style="text-align:left; margin-bottom:1.15rem;">
           <label for="adminPassInput">Contraseña de Administrador</label>
-          <input type="password" id="adminPassInput" class="form-control" value="miisteg2026" onkeydown="if(event.key==='Enter') loginAdmin()" />
-          <small style="color:var(--gold-400); font-size:0.78rem;">Clave por defecto: <strong>miisteg2026</strong></small>
+          <input
+            type="password"
+            id="adminPassInput"
+            class="form-control"
+            placeholder="Ingresa tu contraseña de administrador..."
+            autocomplete="current-password"
+            onkeydown="if(event.key==='Enter') loginAdmin()"
+          />
         </div>
         <button type="button" class="btn btn-primary" style="width:100%;" onclick="loginAdmin()">
           🔐 Entrar al Panel de Control
@@ -525,12 +545,12 @@
 
       <!-- Vista Principal del CMS -->
       <div id="adminDashboardView" style="display:none;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.2rem; padding-right:2.5rem;">
+        <div class="admin-header-bar">
           <div>
             <span class="section-tag" id="storageStatusBadge">CMS Persistente • MongoDB</span>
-            <h3 style="font-size:1.45rem; font-weight:900;">Panel de Control — 1.er Foro Estatal MIISTEG</h3>
+            <h3 style="font-size:1.35rem; font-weight:900;">Panel de Control — 1.er Foro Estatal MIISTEG</h3>
           </div>
-          <div style="display:flex; gap:0.5rem;">
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
             <button type="button" class="btn btn-teal btn-sm" onclick="exportBackupJSON()">💾 Exportar Respaldo JSON</button>
           </div>
         </div>

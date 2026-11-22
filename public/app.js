@@ -24,6 +24,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   startCountdown();
 });
 
+// Menú móvil responsivo
+function toggleMobileMenu() {
+  const nav = document.getElementById('navCollapse');
+  const btn = document.getElementById('mobileMenuToggle');
+  if (!nav) return;
+  const isOpen = nav.classList.toggle('open');
+  if (btn) btn.textContent = isOpen ? '✕' : '☰';
+}
+
+function closeMobileMenu() {
+  const nav = document.getElementById('navCollapse');
+  const btn = document.getElementById('mobileMenuToggle');
+  if (nav) nav.classList.remove('open');
+  if (btn) btn.textContent = '☰';
+}
+
 function preloadLogoForCertificate() {
   const img = new Image();
   img.crossOrigin = 'anonymous';
@@ -413,7 +429,7 @@ function mostrarConfirmacionRegistro(reg) {
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
       <div>
         <span class="tag-chip teal">¡REGISTRO CONFIRMADO!</span>
-        <h4 style="font-size:1.2rem; font-weight:900; margin-top:0.4rem;">Folio Oficial: <span style="color:var(--gold-400);">${escapeHtml(reg.folio)}</span></h4>
+        <h4 style="font-size:1.15rem; font-weight:900; margin-top:0.4rem;">Folio Oficial: <span style="color:var(--gold-400);">${escapeHtml(reg.folio)}</span></h4>
         <p style="font-size:0.88rem; color:var(--text-muted); margin-top:0.2rem;">
           Participante: <strong>${escapeHtml(reg.nombre)}</strong> (${escapeHtml(reg.rol)})<br/>
           Turno: ${escapeHtml(reg.turno)} • Sede: Auditorio José Joaquín de Herrera
@@ -725,6 +741,8 @@ function imprimirConstanciaPDF() {
 function openAdminModal() {
   const modal = document.getElementById('adminModal');
   if (modal) modal.classList.add('open');
+  const passInput = document.getElementById('adminPassInput');
+  if (passInput && !isAdminAuthenticated) passInput.value = '';
   if (isAdminAuthenticated) {
     document.getElementById('adminLoginView').style.display = 'none';
     document.getElementById('adminDashboardView').style.display = 'block';
@@ -738,7 +756,12 @@ function closeAdminModal() {
 }
 
 async function loginAdmin() {
-  const pass = document.getElementById('adminPassInput').value;
+  const passInput = document.getElementById('adminPassInput');
+  const pass = (passInput ? passInput.value : '').trim();
+  if (!pass) {
+    showToast('Por favor ingresa la contraseña de administrador.');
+    return;
+  }
   try {
     const res = await fetch('/api/admin/login', {
       method: 'POST',
@@ -748,23 +771,27 @@ async function loginAdmin() {
     const data = await res.json();
     if (res.ok && data.ok) {
       isAdminAuthenticated = true;
+      if (passInput) passInput.value = '';
       document.getElementById('adminLoginView').style.display = 'none';
       document.getElementById('adminDashboardView').style.display = 'block';
       renderAdminTab();
       showToast('Acceso concedido al Panel Administrable MIISTEG');
       return;
     }
+    showToast('Contraseña de administrador incorrecta.');
+    return;
   } catch (e) {
-    // Fallback local
+    // Fallback sin conexión al servidor
   }
-  if (pass === 'miisteg2026' || pass === 'admin') {
+  if (pass === 'miisteg2026') {
     isAdminAuthenticated = true;
+    if (passInput) passInput.value = '';
     document.getElementById('adminLoginView').style.display = 'none';
     document.getElementById('adminDashboardView').style.display = 'block';
     renderAdminTab();
     showToast('Bienvenido al Panel Administrable MIISTEG');
   } else {
-    showToast('Contraseña incorrecta. Usa: miisteg2026');
+    showToast('Contraseña de administrador incorrecta.');
   }
 }
 
@@ -892,33 +919,35 @@ function renderAdminTab() {
         </form>
       </div>
 
-      <table class="admin-table">
-        <thead>
-          <tr>
-            <th>Turno</th>
-            <th>Horario</th>
-            <th>Actividad</th>
-            <th>Duración</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${list.map((item, idx) => `
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
             <tr>
-              <td><span class="tag-chip">${escapeHtml(item.turno)}</span></td>
-              <td><strong>${escapeHtml(item.horario)}</strong></td>
-              <td>
-                <div>${escapeHtml(item.actividad)}</div>
-                <small style="color:var(--text-muted);">${escapeHtml(item.detalle || '')}</small>
-              </td>
-              <td>${escapeHtml(item.duracion || '')}</td>
-              <td>
-                <button type="button" class="btn btn-danger btn-sm" onclick="eliminarItemColeccion('programa', ${idx})">🗑️ Eliminar</button>
-              </td>
+              <th>Turno</th>
+              <th>Horario</th>
+              <th>Actividad</th>
+              <th>Duración</th>
+              <th>Acciones</th>
             </tr>
-          `).join('')}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            ${list.map((item, idx) => `
+              <tr>
+                <td><span class="tag-chip">${escapeHtml(item.turno)}</span></td>
+                <td><strong>${escapeHtml(item.horario)}</strong></td>
+                <td>
+                  <div>${escapeHtml(item.actividad)}</div>
+                  <small style="color:var(--text-muted);">${escapeHtml(item.detalle || '')}</small>
+                </td>
+                <td>${escapeHtml(item.duracion || '')}</td>
+                <td>
+                  <button type="button" class="btn btn-danger btn-sm" onclick="eliminarItemColeccion('programa', ${idx})">🗑️ Eliminar</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
     `;
   } else if (currentAdminTab === 'ponencias') {
     const list = appData.ponencias || [];
@@ -984,30 +1013,32 @@ function renderAdminTab() {
         </form>
       </div>
 
-      <table class="admin-table">
-        <thead>
-          <tr>
-            <th>Eje / Turno</th>
-            <th>Título</th>
-            <th>Ponente</th>
-            <th>Horario</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${list.map((p, idx) => `
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
             <tr>
-              <td><span class="tag-chip">${escapeHtml(p.eje)}</span><br/><small>${escapeHtml(p.turno || '')}</small></td>
-              <td><strong>${escapeHtml(p.titulo)}</strong></td>
-              <td>${escapeHtml(p.ponente)}<br/><small style="color:var(--text-muted);">${escapeHtml(p.institucion || '')}</small></td>
-              <td>${escapeHtml(p.horario || '')}</td>
-              <td>
-                <button type="button" class="btn btn-danger btn-sm" onclick="eliminarItemColeccion('ponencias', ${idx})">🗑️ Eliminar</button>
-              </td>
+              <th>Eje / Turno</th>
+              <th>Título</th>
+              <th>Ponente</th>
+              <th>Horario</th>
+              <th>Acciones</th>
             </tr>
-          `).join('')}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            ${list.map((p, idx) => `
+              <tr>
+                <td><span class="tag-chip">${escapeHtml(p.eje)}</span><br/><small>${escapeHtml(p.turno || '')}</small></td>
+                <td><strong>${escapeHtml(p.titulo)}</strong></td>
+                <td>${escapeHtml(p.ponente)}<br/><small style="color:var(--text-muted);">${escapeHtml(p.institucion || '')}</small></td>
+                <td>${escapeHtml(p.horario || '')}</td>
+                <td>
+                  <button type="button" class="btn btn-danger btn-sm" onclick="eliminarItemColeccion('ponencias', ${idx})">🗑️ Eliminar</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
     `;
   } else if (currentAdminTab === 'videos') {
     const list = appData.videos || [];
@@ -1041,28 +1072,30 @@ function renderAdminTab() {
         </form>
       </div>
 
-      <table class="admin-table">
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Categoría</th>
-            <th>URL</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${list.map((v, idx) => `
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
             <tr>
-              <td><strong>${escapeHtml(v.titulo)}</strong></td>
-              <td>${escapeHtml(v.categoria || '')}</td>
-              <td><small style="color:var(--cyan-400);">${escapeHtml(v.url)}</small></td>
-              <td>
-                <button type="button" class="btn btn-danger btn-sm" onclick="eliminarItemColeccion('videos', ${idx})">🗑️ Eliminar</button>
-              </td>
+              <th>Título</th>
+              <th>Categoría</th>
+              <th>URL</th>
+              <th>Acciones</th>
             </tr>
-          `).join('')}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            ${list.map((v, idx) => `
+              <tr>
+                <td><strong>${escapeHtml(v.titulo)}</strong></td>
+                <td>${escapeHtml(v.categoria || '')}</td>
+                <td><small style="color:var(--cyan-400);">${escapeHtml(v.url)}</small></td>
+                <td>
+                  <button type="button" class="btn btn-danger btn-sm" onclick="eliminarItemColeccion('videos', ${idx})">🗑️ Eliminar</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
     `;
   } else if (currentAdminTab === 'galeria') {
     const list = appData.galeria || [];
@@ -1096,28 +1129,30 @@ function renderAdminTab() {
         </form>
       </div>
 
-      <table class="admin-table">
-        <thead>
-          <tr>
-            <th>Vista Previa</th>
-            <th>Título</th>
-            <th>Categoría</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${list.map((g, idx) => `
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
             <tr>
-              <td><img src="${escapeHtml(g.url)}" alt="" style="width:70px; height:48px; object-fit:cover; border-radius:6px;" /></td>
-              <td><strong>${escapeHtml(g.titulo)}</strong><br/><small style="color:var(--text-muted);">${escapeHtml(g.descripcion || '')}</small></td>
-              <td>${escapeHtml(g.categoria || '')}</td>
-              <td>
-                <button type="button" class="btn btn-danger btn-sm" onclick="eliminarItemColeccion('galeria', ${idx})">🗑️ Eliminar</button>
-              </td>
+              <th>Vista Previa</th>
+              <th>Título</th>
+              <th>Categoría</th>
+              <th>Acciones</th>
             </tr>
-          `).join('')}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            ${list.map((g, idx) => `
+              <tr>
+                <td><img src="${escapeHtml(g.url)}" alt="" style="width:70px; height:48px; object-fit:cover; border-radius:6px;" /></td>
+                <td><strong>${escapeHtml(g.titulo)}</strong><br/><small style="color:var(--text-muted);">${escapeHtml(g.descripcion || '')}</small></td>
+                <td>${escapeHtml(g.categoria || '')}</td>
+                <td>
+                  <button type="button" class="btn btn-danger btn-sm" onclick="eliminarItemColeccion('galeria', ${idx})">🗑️ Eliminar</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
     `;
   } else if (currentAdminTab === 'registros') {
     const list = appData.registros || [];
@@ -1132,46 +1167,48 @@ function renderAdminTab() {
         </div>
       </div>
 
-      <table class="admin-table">
-        <thead>
-          <tr>
-            <th>Folio</th>
-            <th>Nombre Completo</th>
-            <th>Institución / Nivel</th>
-            <th>Rol / Turno</th>
-            <th>Constancia</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${list.map((r, idx) => `
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
             <tr>
-              <td><strong style="color:var(--gold-400);">${escapeHtml(r.folio)}</strong></td>
-              <td>
-                <strong>${escapeHtml(r.nombre)}</strong><br/>
-                <small style="color:var(--text-muted);">${escapeHtml(r.email)} • ${escapeHtml(r.telefono || '')}</small>
-              </td>
-              <td>${escapeHtml(r.institucion || '')}<br/><small style="color:var(--cyan-400);">${escapeHtml(r.nivel || '')}</small></td>
-              <td>${escapeHtml(r.rol || '')}<br/><small>${escapeHtml(r.turno || '')}</small></td>
-              <td>
-                <button
-                  type="button"
-                  class="btn btn-sm ${r.constanciaAprobada ? 'btn-teal' : 'btn-outline'}"
-                  onclick="toggleAprobarConstancia(${idx})"
-                >
-                  ${r.constanciaAprobada ? '✅ Aprobada' : '⏳ Pendiente'}
-                </button>
-              </td>
-              <td>
-                <div style="display:flex; gap:0.35rem;">
-                  <button type="button" class="btn btn-primary btn-sm" onclick="verConstanciaDesdeAdmin('${escapeHtml(r.folio)}')">🎓 Ver</button>
-                  <button type="button" class="btn btn-danger btn-sm" onclick="eliminarItemColeccion('registros', ${idx})">🗑️</button>
-                </div>
-              </td>
+              <th>Folio</th>
+              <th>Nombre Completo</th>
+              <th>Institución / Nivel</th>
+              <th>Rol / Turno</th>
+              <th>Constancia</th>
+              <th>Acciones</th>
             </tr>
-          `).join('')}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            ${list.map((r, idx) => `
+              <tr>
+                <td><strong style="color:var(--gold-400);">${escapeHtml(r.folio)}</strong></td>
+                <td>
+                  <strong>${escapeHtml(r.nombre)}</strong><br/>
+                  <small style="color:var(--text-muted);">${escapeHtml(r.email)} • ${escapeHtml(r.telefono || '')}</small>
+                </td>
+                <td>${escapeHtml(r.institucion || '')}<br/><small style="color:var(--cyan-400);">${escapeHtml(r.nivel || '')}</small></td>
+                <td>${escapeHtml(r.rol || '')}<br/><small>${escapeHtml(r.turno || '')}</small></td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-sm ${r.constanciaAprobada ? 'btn-teal' : 'btn-outline'}"
+                    onclick="toggleAprobarConstancia(${idx})"
+                  >
+                    ${r.constanciaAprobada ? '✅ Aprobada' : '⏳ Pendiente'}
+                  </button>
+                </td>
+                <td>
+                  <div style="display:flex; gap:0.35rem;">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="verConstanciaDesdeAdmin('${escapeHtml(r.folio)}')">🎓 Ver</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="eliminarItemColeccion('registros', ${idx})">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
     `;
   }
 }
