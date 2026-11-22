@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Administración | MIISTEG — 1.er Foro Estatal de Mujeres en la Ciencia y Tecnología</title>
+  <link rel="icon" type="image/png" href="/uploads/logo-miisteg-transparent.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin.css" />
+</head>
+<body>
+
+  <!-- PANTALLA DE LOGIN DE ADMINISTRADOR (Sin mostrar ni autocompletar clave) -->
+  <div class="login-screen" id="adminLoginScreen">
+    <div class="login-card">
+      <div class="login-logo-ring">
+        <img src="/uploads/logo-miisteg-transparent.png" alt="Logo MIISTEG" />
+      </div>
+      <span class="badge-tag">Back-Office Oficial • MIISTEG 2026</span>
+      <h1>Panel de Administración</h1>
+      <p>
+        Sistema central para gestionar registros de asistentes, emisión de constancias, enlaces de transmisiones en vivo, videoteca, ponencias, programa general y galería.
+      </p>
+
+      <form onsubmit="handleAdminLogin(event)" class="login-form">
+        <div class="form-group">
+          <label for="loginPasswordInput">Contraseña de Administrador</label>
+          <input
+            type="password"
+            id="loginPasswordInput"
+            class="form-control"
+            placeholder="Ingresa tu contraseña de acceso..."
+            autocomplete="current-password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          🔐 Iniciar Sesión en el Panel
+        </button>
+      </form>
+
+      <div class="login-footer-link">
+        <a href="/">← Volver al Portal Público del Foro</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAYOUT PRINCIPAL DEL PANEL DE ADMINISTRACIÓN -->
+  <div class="admin-layout" id="adminAppLayout" style="display:none;">
+
+    <!-- Sidebar Lateral -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">
+          <img src="/uploads/logo-miisteg-transparent.png" alt="MIISTEG" />
+        </div>
+        <div class="sidebar-brand-text">
+          <strong>MIISTEG 2026</strong>
+          <span>Panel Administrador</span>
+        </div>
+        <button type="button" class="sidebar-close-btn" onclick="toggleSidebar(false)">✕</button>
+      </div>
+
+      <div class="sidebar-db-status" id="sidebarDbStatus">
+        <span class="status-dot online"></span>
+        <div>
+          <strong id="dbStatusText">MongoDB Activo</strong>
+          <small>Persistencia en tiempo real</small>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button type="button" class="nav-item active" data-sec="dashboard" onclick="switchSection('dashboard', this)">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Resumen General</span>
+        </button>
+        <button type="button" class="nav-item" data-sec="registros" onclick="switchSection('registros', this)">
+          <span class="nav-icon">👥</span>
+          <span class="nav-label">Registros de Asistentes</span>
+          <span class="nav-badge" id="badgeRegistros">0</span>
+        </button>
+        <button type="button" class="nav-item" data-sec="constancias" onclick="switchSection('constancias', this)">
+          <span class="nav-icon">🎓</span>
+          <span class="nav-label">Constancias y Emisión</span>
+          <span class="nav-badge teal" id="badgeConstancias">0</span>
+        </button>
+        <button type="button" class="nav-item" data-sec="envivos" onclick="switchSection('envivos', this)">
+          <span class="nav-icon">🔴</span>
+          <span class="nav-label">En Vivos y Videos</span>
+          <span class="nav-badge" id="badgeVideos">0</span>
+        </button>
+        <button type="button" class="nav-item" data-sec="ponencias" onclick="switchSection('ponencias', this)">
+          <span class="nav-icon">🎤</span>
+          <span class="nav-label">Ponencias y Paneles</span>
+          <span class="nav-badge" id="badgePonencias">0</span>
+        </button>
+        <button type="button" class="nav-item" data-sec="programa" onclick="switchSection('programa', this)">
+          <span class="nav-icon">📋</span>
+          <span class="nav-label">Programa General</span>
+          <span class="nav-badge" id="badgePrograma">0</span>
+        </button>
+        <button type="button" class="nav-item" data-sec="galeria" onclick="switchSection('galeria', this)">
+          <span class="nav-icon">🖼️</span>
+          <span class="nav-label">Galería y Ejes</span>
+          <span class="nav-badge" id="badgeGaleria">0</span>
+        </button>
+        <button type="button" class="nav-item" data-sec="config" onclick="switchSection('config', this)">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">Configuración y BD</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/" target="_blank" class="btn btn-outline btn-sm btn-block">
+          🌐 Ver Portal Público
+        </a>
+        <button type="button" class="btn btn-danger btn-sm btn-block" onclick="logoutAdmin()">
+          🚪 Cerrar Sesión
+        </button>
+      </div>
+    </aside>
+
+    <!-- Overlay móvil para sidebar -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar(false)"></div>
+
+    <!-- Área Principal -->
+    <div class="admin-main">
+      <!-- Topbar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button type="button" class="topbar-burger" onclick="toggleSidebar(true)" aria-label="Menú">
+            ☰
+          </button>
+          <div>
+            <h2 id="topbarTitle">Resumen General del Foro</h2>
+            <p id="topbarSubtitle">1.er Foro Estatal de Mujeres en la Ciencia y Tecnología — Guerrero</p>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <button type="button" class="btn btn-outline btn-sm" onclick="reloadAdminData()">
+            🔄 Actualizar Datos
+          </button>
+          <button type="button" class="btn btn-teal btn-sm" onclick="exportBackupJSON()">
+            💾 Respaldo JSON
+          </button>
+          <a href="/" class="btn btn-primary btn-sm">
+            🌐 Ir al Sitio Web
+          </a>
+        </div>
+      </header>
+
+      <!-- Contenedor Dinámico de Módulos -->
+      <main class="admin-content" id="adminMainContent"></main>
+    </div>
+  </div>
+
+  <!-- MODAL UNIVERSAL PARA EDICIÓN / VISTA PREVIA -->
+  <div class="modal-overlay" id="editModal" onclick="if(event.target===this) closeEditModal()">
+    <div class="modal-card" id="editModalCard">
+      <button type="button" class="modal-close" onclick="closeEditModal()">✕</button>
+      <div id="editModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Contenedor Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="/admin.js"></script>
+</body>
+</html>

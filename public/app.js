@@ -280,7 +280,8 @@ function renderPonencias() {
         <p class="card-desc">${escapeHtml(p.resumen || '')}</p>
         <div class="card-footer">
           <span style="font-size:0.82rem; font-weight:700; color:var(--cyan-400);">🕒 ${escapeHtml(p.horario || '')}</span>
-          <div style="display:flex; gap:0.4rem;">
+          <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+            ${p.videoUrl ? `<a href="${escapeHtml(p.videoUrl)}" target="_blank" class="btn btn-primary btn-sm">🔴 Ver Video / En Vivo</a>` : ''}
             ${p.documentoUrl ? `<a href="${escapeHtml(p.documentoUrl)}" class="btn btn-outline btn-sm">📄 Info / Material</a>` : ''}
           </div>
         </div>
@@ -289,8 +290,44 @@ function renderPonencias() {
   `).join('');
 }
 
-// 5. Renderizar Videos
+// 5. Renderizar Transmisión En Vivo y Videos
 function renderVideos() {
+  const liveContainer = document.getElementById('liveStreamBannerContainer');
+  const cfg = appData.config || {};
+  if (liveContainer) {
+    if (cfg.enVivoActivo && cfg.transmisionUrl) {
+      liveContainer.innerHTML = `
+        <div class="glass-panel" style="border-color:rgba(239,68,68,0.5); box-shadow:0 12px 40px rgba(239,68,68,0.2);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem; margin-bottom:1.1rem;">
+            <div>
+              <span class="tag-chip" style="background:rgba(239,68,68,0.25); color:#fca5a5; border:1px solid rgba(239,68,68,0.5);">
+                🔴 SEÑAL EN VIVO • ${escapeHtml(cfg.enVivoPlataforma || 'Transmisión Oficial')}
+              </span>
+              <h3 style="font-size:1.25rem; font-weight:900; margin-top:0.4rem;">
+                ${escapeHtml(cfg.enVivoTitulo || 'Transmisión En Vivo — 1.er Foro Estatal MIISTEG 2026')}
+              </h3>
+            </div>
+            ${cfg.enVivoUrlDirecta ? `
+              <a href="${escapeHtml(cfg.enVivoUrlDirecta)}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                🔗 Abrir Enlace Directo del En Vivo
+              </a>
+            ` : ''}
+          </div>
+          <div class="video-frame-wrap" style="border-radius:14px; overflow:hidden; border:1px solid var(--border-glass);">
+            <iframe
+              src="${escapeHtml(normalizeYoutubeEmbed(cfg.transmisionUrl))}"
+              title="${escapeHtml(cfg.enVivoTitulo || 'Transmisión En Vivo')}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      `;
+    } else {
+      liveContainer.innerHTML = '';
+    }
+  }
+
   const container = document.getElementById('videosContainer');
   if (!container) return;
   const videos = appData.videos || [];

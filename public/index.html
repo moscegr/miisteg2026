@@ -47,9 +47,9 @@
 
       <div class="nav-actions">
         <a href="#registro" class="btn btn-primary btn-sm" onclick="closeMobileMenu()">Registrarme</a>
-        <button type="button" class="btn btn-admin" onclick="closeMobileMenu(); openAdminModal()">
+        <a href="/admin" class="btn btn-admin" onclick="closeMobileMenu()">
           ⚙️ Panel Admin
-        </button>
+        </a>
       </div>
     </nav>
   </header>
@@ -213,15 +213,18 @@
     <div class="cards-grid" id="ponenciasContainer"></div>
   </section>
 
-  <!-- Sección 4: Videos y Transmisiones -->
+  <!-- Sección 4: Transmisión En Vivo y Videoteca -->
   <section class="section" id="videos">
     <div class="section-header">
-      <span class="section-tag">Videoteca y Transmisión Digital</span>
-      <h2 class="section-title">Videos, Conferencias y Cápsulas STEAM</h2>
+      <span class="section-tag">Transmisión En Vivo y Videoteca Digital</span>
+      <h2 class="section-title">Señal En Vivo, Conferencias y Cápsulas STEAM</h2>
       <p class="section-subtitle">
-        Revive las conferencias magistrales, cápsulas de divulgación y transmisiones en directo del foro.
+        Sigue la transmisión en directo desde el Auditorio José Joaquín de Herrera y revive las conferencias magistrales y cápsulas del foro.
       </p>
     </div>
+
+    <!-- Contenedor Destacado de Transmisión En Vivo -->
+    <div id="liveStreamBannerContainer" style="margin-bottom:2rem;"></div>
 
     <div class="cards-grid" id="videosContainer"></div>
   </section>

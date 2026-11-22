@@ -379,6 +379,8 @@ const server = http.createServer(async (req, res) => {
   let safePath = path.normalize(decodeURIComponent(pathname)).replace(/^(\.\.[\/\\])+/, '');
   if (safePath === '/' || safePath === '\\') {
     safePath = '/index.html';
+  } else if (safePath === '/admin' || safePath === '\\admin' || safePath === '/admin/' || safePath === '\\admin\\') {
+    safePath = '/admin.html';
   }
   const filePath = path.join(PUBLIC_DIR, safePath);
 
