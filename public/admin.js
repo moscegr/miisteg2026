@@ -893,8 +893,8 @@ function renderCertStudioCanvas() {
   ctx.fillText('C O N S T A N C I A', W / 2, 332);
 
   ctx.fillStyle = '#1e1b4b';
-  ctx.font = '900 40px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText(`A: ${reg.nombre}`, W / 2, 405);
+  ctx.font = '900 38px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText(`A: ${reg.nombre}`, W / 2, 405, W - 240);
 
   ctx.strokeStyle = '#d97706';
   ctx.lineWidth = 2.5;
@@ -906,12 +906,12 @@ function renderCertStudioCanvas() {
   const rolLabel = (reg.rol || 'Asistente').toUpperCase();
   ctx.fillStyle = '#0f766e';
   ctx.font = '800 24px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText(`En calidad de: ${rolLabel}`, W / 2, 470);
+  ctx.fillText(`En calidad de: ${rolLabel}`, W / 2, 470, W - 260);
 
   if (reg.ponenciaTitulo) {
     ctx.fillStyle = '#4c1d95';
     ctx.font = 'italic 700 21px "Plus Jakarta Sans", sans-serif';
-    ctx.fillText(`«${reg.ponenciaTitulo}»`, W / 2, 505);
+    ctx.fillText(`«${reg.ponenciaTitulo}»`, W / 2, 505, W - 260);
   }
 
   const bodyText = cfg.textoConstancia ||
@@ -932,7 +932,7 @@ function renderCertStudioCanvas() {
   ctx.font = 'italic 700 18px "Plus Jakarta Sans", sans-serif';
   ctx.fillText('«¡Unidas por la ciencia, conectadas por la innovación y comprometidas con Guerrero!»', W / 2, 725);
 
-  const yFirma = 840;
+  const yFirma = 810;
   ctx.strokeStyle = '#475569';
   ctx.lineWidth = 1.8;
 
@@ -942,11 +942,11 @@ function renderCertStudioCanvas() {
   ctx.stroke();
 
   ctx.fillStyle = '#1e1b4b';
-  ctx.font = '800 19px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText(cfg.firmante1Nombre || 'Mtra. Yammel Anilú Martínez Saavedra', 380, yFirma + 28);
-  ctx.fillStyle = '#64748b';
-  ctx.font = '600 16px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText(cfg.firmante1Cargo || 'Coordinadora General MIISTEG', 380, yFirma + 52);
+  ctx.font = '800 18px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText(cfg.firmante1Nombre || 'Mtra. Yammel Anilú Martínez Saavedra', 380, yFirma + 26, 430);
+  ctx.fillStyle = '#334155';
+  ctx.font = '600 15px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText(cfg.firmante1Cargo || 'Coordinadora General MIISTEG', 380, yFirma + 48, 430);
 
   ctx.beginPath();
   ctx.moveTo(830, yFirma);
@@ -954,29 +954,37 @@ function renderCertStudioCanvas() {
   ctx.stroke();
 
   ctx.fillStyle = '#1e1b4b';
-  ctx.font = '800 19px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText(cfg.firmante2Nombre || 'Comité Científico y Organizador', 1020, yFirma + 28);
-  ctx.fillStyle = '#64748b';
-  ctx.font = '600 16px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText(cfg.firmante2Cargo || '1.er Foro Estatal de Mujeres en la Ciencia y Tecnología', 1020, yFirma + 52);
+  ctx.font = '800 18px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText(cfg.firmante2Nombre || 'Comité Científico y Organizador', 1020, yFirma + 26, 430);
+  ctx.fillStyle = '#334155';
+  ctx.font = '600 15px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText(cfg.firmante2Cargo || '1.er Foro Estatal de Mujeres en la Ciencia y Tecnología', 1020, yFirma + 48, 430);
 
   ctx.save();
   ctx.beginPath();
-  ctx.arc(W / 2, yFirma - 10, 52, 0, Math.PI * 2);
+  ctx.arc(W / 2, yFirma - 5, 50, 0, Math.PI * 2);
   ctx.fillStyle = '#ffffff';
   ctx.fill();
   ctx.lineWidth = 3;
   ctx.strokeStyle = '#be185d';
   ctx.stroke();
   if (certLogoImg) {
-    ctx.drawImage(certLogoImg, W / 2 - 38, yFirma - 48, 76, 76);
+    ctx.drawImage(certLogoImg, W / 2 - 36, yFirma - 41, 72, 72);
   }
   ctx.restore();
 
-  ctx.textAlign = 'left';
-  ctx.fillStyle = '#475569';
-  ctx.font = '700 15px monospace';
-  ctx.fillText(`FOLIO DE VERIFICACIÓN: ${reg.folio}  |  INSTITUCIÓN: ${reg.institucion || 'Guerrero'}`, 75, H - 46);
+  // Cintillo de Folio dentro del marco dorado (sin cruzar ninguna línea)
+  ctx.fillStyle = 'rgba(76, 29, 149, 0.08)';
+  ctx.fillRect(140, 880, W - 280, 32);
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#1e1b4b';
+  ctx.font = '700 15px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText(
+    `FOLIO DE VERIFICACIÓN: ${reg.folio}   •   INSTITUCIÓN: ${reg.institucion || 'Guerrero'}`,
+    W / 2,
+    901,
+    W - 310
+  );
 }
 
 function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
