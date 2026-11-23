@@ -707,18 +707,11 @@ function dibujarConstanciaCanvas(reg) {
   }
   ctx.restore();
 
-  // Cintillo de Folio dentro del marco dorado (sin cruzar ninguna línea)
-  ctx.fillStyle = 'rgba(76, 29, 149, 0.08)';
-  ctx.fillRect(140, 880, W - 280, 32);
-  ctx.textAlign = 'center';
-  ctx.fillStyle = '#1e1b4b';
-  ctx.font = '700 15px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText(
-    `FOLIO DE VERIFICACIÓN: ${reg.folio}   •   INSTITUCIÓN: ${reg.institucion || 'Guerrero'}`,
-    W / 2,
-    901,
-    W - 310
-  );
+  // Cadena de verificación en la esquina inferior izquierda (dentro del marco, sin fondo)
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#475569';
+  ctx.font = '700 13px "Plus Jakarta Sans", sans-serif';
+  ctx.fillText(`FOLIO DE VERIFICACIÓN: ${reg.folio}`, 78, 908);
 }
 
 function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
