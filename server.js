@@ -191,7 +191,6 @@ async function createRegistro(body) {
     rol: body.rol || 'Asistente',
     turno: body.turno || 'Ambos Turnos (09:30 a 16:00 h)',
     eje: body.eje || 'EJE 1',
-    ponenciaTitulo: (body.ponenciaTitulo || '').trim(),
     constanciaAprobada: false,
     fechaRegistro: new Date().toISOString()
   };

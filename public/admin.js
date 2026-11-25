@@ -471,7 +471,6 @@ function renderRegistrosSection(container) {
               <th>Nombre Completo y Contacto</th>
               <th>Institución y Nivel</th>
               <th>Rol / Turno / Eje</th>
-              <th>Ponencia / Proyecto</th>
               <th>Constancia</th>
               <th>Acciones</th>
             </tr>
@@ -496,7 +495,6 @@ function renderRegistrosSection(container) {
                     <small>${escapeHtml(r.turno || '')}</small><br/>
                     <small style="color:var(--gold-400);">${escapeHtml(r.eje || '')}</small>
                   </td>
-                  <td><small>${escapeHtml(r.ponenciaTitulo || '—')}</small></td>
                   <td>
                     <button
                       type="button"
@@ -534,7 +532,6 @@ function abrirModalRegistro(editIndex = null) {
     rol: 'Asistente',
     turno: 'Ambos Turnos (09:30 a 16:00 h)',
     eje: 'EJE 1',
-    ponenciaTitulo: '',
     constanciaAprobada: false
   };
 
@@ -592,10 +589,6 @@ function abrirModalRegistro(editIndex = null) {
         </select>
       </div>
       <div class="form-group full">
-        <label>Título de Ponencia, Conferencia o Participación (Opcional, aparece en la constancia)</label>
-        <input type="text" id="modRegPonencia" class="form-control" value="${escapeHtml(r.ponenciaTitulo || '')}" />
-      </div>
-      <div class="form-group full">
         <label style="display:flex; align-items:center; gap:0.6rem; cursor:pointer;">
           <input type="checkbox" id="modRegAprobada" ${r.constanciaAprobada ? 'checked' : ''} />
           Constancia aprobada y habilitada para descarga
@@ -622,7 +615,6 @@ async function guardarRegistroModal(e, editIndex) {
     rol: document.getElementById('modRegRol').value,
     turno: document.getElementById('modRegTurno').value,
     eje: document.getElementById('modRegEje').value,
-    ponenciaTitulo: document.getElementById('modRegPonencia').value.trim(),
     constanciaAprobada: document.getElementById('modRegAprobada').checked
   };
 
@@ -915,19 +907,13 @@ function renderCertStudioCanvas() {
   const rolLabel = (reg.rol || 'Asistente').toUpperCase();
   ctx.fillStyle = '#0f766e';
   ctx.font = '800 24px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText(`En calidad de: ${rolLabel}`, W / 2, 470, W - 260);
-
-  if (reg.ponenciaTitulo) {
-    ctx.fillStyle = '#4c1d95';
-    ctx.font = 'italic 700 21px "Plus Jakarta Sans", sans-serif';
-    ctx.fillText(`«${reg.ponenciaTitulo}»`, W / 2, 505, W - 260);
-  }
+  ctx.fillText(`En calidad de: ${rolLabel}`, W / 2, 475, W - 260);
 
   const bodyText = cfg.textoConstancia ||
     'Por su destacada y valiosa participación en el 1.er Foro Estatal de Mujeres en la Ciencia y Tecnología: «Mujeres Innovando el Futuro de Guerrero: Media Superior y Superior».';
   ctx.fillStyle = '#334155';
   ctx.font = '500 21px "Plus Jakarta Sans", sans-serif';
-  wrapCanvasText(ctx, bodyText, W / 2, reg.ponenciaTitulo ? 550 : 530, W - 260, 32);
+  wrapCanvasText(ctx, bodyText, W / 2, 535, W - 260, 32);
 
   ctx.fillStyle = '#1e1b4b';
   ctx.font = '700 20px "Plus Jakarta Sans", sans-serif';
@@ -1983,7 +1969,7 @@ function normalizeYoutubeEmbed(rawUrl) {
 
 function exportarRegistrosCSV() {
   const list = appData.registros || [];
-  const headers = ['Folio', 'Nombre', 'Email', 'Telefono', 'Institucion', 'Nivel', 'Rol', 'Turno', 'Eje', 'Ponencia', 'ConstanciaAprobada', 'FechaRegistro'];
+  const headers = ['Folio', 'Nombre', 'Email', 'Telefono', 'Institucion', 'Nivel', 'Rol', 'Turno', 'Eje', 'ConstanciaAprobada', 'FechaRegistro'];
   const rows = list.map(r => [
     r.folio,
     r.nombre,
@@ -1994,7 +1980,6 @@ function exportarRegistrosCSV() {
     r.rol,
     r.turno,
     r.eje,
-    r.ponenciaTitulo || '',
     r.constanciaAprobada ? 'SI' : 'NO',
     r.fechaRegistro || ''
   ]);

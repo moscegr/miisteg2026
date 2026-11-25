@@ -299,7 +299,6 @@
       "rol": "Comité Organizador",
       "turno": "Ambos Turnos (09:30 a 16:00 h)",
       "eje": "EJE 3",
-      "ponenciaTitulo": "Coordinación General del 1.er Foro Estatal MIISTEG",
       "constanciaAprobada": true,
       "fechaRegistro": "2026-11-19T09:00:00.000Z"
     },
@@ -314,7 +313,6 @@
       "rol": "Ponente Magistral",
       "turno": "Primer Turno (10:00 a 12:45 h)",
       "eje": "EJE 1",
-      "ponenciaTitulo": "Ciencia con Impacto Social y Saberes Locales en Guerrero",
       "constanciaAprobada": true,
       "fechaRegistro": "2026-11-19T09:15:00.000Z"
     },
@@ -329,7 +327,6 @@
       "rol": "Panelista",
       "turno": "Segundo Turno (13:00 a 16:00 h)",
       "eje": "EJE 2",
-      "ponenciaTitulo": "Educación STEAM y Mentoría Tecnológica para Jóvenes Guerrerenses",
       "constanciaAprobada": true,
       "fechaRegistro": "2026-11-19T09:20:00.000Z"
     },
@@ -344,7 +341,6 @@
       "rol": "Asistente",
       "turno": "Primer Turno (10:00 a 12:45 h)",
       "eje": "EJE 2",
-      "ponenciaTitulo": "",
       "constanciaAprobada": true,
       "fechaRegistro": "2026-11-19T09:30:00.000Z"
     }

@@ -430,8 +430,7 @@ async function submitRegistro(event) {
     nivel: document.getElementById('regNivel').value,
     rol: document.getElementById('regRol').value,
     turno: document.getElementById('regTurno').value,
-    eje: document.getElementById('regEje').value,
-    ponenciaTitulo: document.getElementById('regPonencia').value.trim()
+    eje: document.getElementById('regEje').value
   };
 
   try {
@@ -653,20 +652,14 @@ function dibujarConstanciaCanvas(reg) {
   const rolLabel = (reg.rol || 'Asistente').toUpperCase();
   ctx.fillStyle = '#0f766e';
   ctx.font = '800 24px "Plus Jakarta Sans", sans-serif';
-  ctx.fillText(`En calidad de: ${rolLabel}`, W / 2, 470, W - 260);
-
-  if (reg.ponenciaTitulo) {
-    ctx.fillStyle = '#4c1d95';
-    ctx.font = 'italic 700 21px "Plus Jakarta Sans", sans-serif';
-    ctx.fillText(`«${reg.ponenciaTitulo}»`, W / 2, 505, W - 260);
-  }
+  ctx.fillText(`En calidad de: ${rolLabel}`, W / 2, 475, W - 260);
 
   // Cuerpo del texto envuelto
   const bodyText = cfg.textoConstancia ||
     'Por su destacada y valiosa participación en el 1.er Foro Estatal de Mujeres en la Ciencia y Tecnología: «Mujeres Innovando el Futuro de Guerrero: Media Superior y Superior», contribuyendo al fortalecimiento de la investigación de impacto, la educación STEAM y el liderazgo científico femenino.';
   ctx.fillStyle = '#334155';
   ctx.font = '500 21px "Plus Jakarta Sans", sans-serif';
-  wrapText(ctx, bodyText, W / 2, reg.ponenciaTitulo ? 550 : 530, W - 260, 32);
+  wrapText(ctx, bodyText, W / 2, 535, W - 260, 32);
 
   // Lugar y Fecha
   ctx.fillStyle = '#1e1b4b';
@@ -1429,7 +1422,7 @@ function verConstanciaDesdeAdmin(folio) {
 
 function exportarRegistrosCSV() {
   const list = appData.registros || [];
-  const headers = ['Folio', 'Nombre', 'Email', 'Telefono', 'Institucion', 'Nivel', 'Rol', 'Turno', 'Eje', 'Ponencia', 'ConstanciaAprobada'];
+  const headers = ['Folio', 'Nombre', 'Email', 'Telefono', 'Institucion', 'Nivel', 'Rol', 'Turno', 'Eje', 'ConstanciaAprobada'];
   const rows = list.map(r => [
     r.folio,
     r.nombre,
@@ -1440,7 +1433,6 @@ function exportarRegistrosCSV() {
     r.rol,
     r.turno,
     r.eje,
-    r.ponenciaTitulo || '',
     r.constanciaAprobada ? 'SI' : 'NO'
   ]);
   const csvContent = '\uFEFF' + [headers, ...rows]
