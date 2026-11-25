@@ -16,6 +16,7 @@ let appData = {
 let currentSection = 'dashboard';
 let selectedCertFolio = '';
 let certLogoImg = null;
+let certTopLeftLogoImg = null;
 
 // Filtros del módulo de registros
 let regSearchQuery = '';
@@ -42,15 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function preloadCertLogo() {
-  const img = new Image();
-  img.crossOrigin = 'anonymous';
-  img.onload = () => {
-    certLogoImg = img;
-    if (currentSection === 'constancias') {
-      renderCertStudioCanvas();
-    }
+  const imgSeal = new Image();
+  imgSeal.crossOrigin = 'anonymous';
+  imgSeal.onload = () => {
+    certLogoImg = imgSeal;
+    if (currentSection === 'constancias') renderCertStudioCanvas();
   };
-  img.src = '/uploads/logo-miisteg-transparent.png';
+  imgSeal.src = '/uploads/logo-miisteg-transparent.png';
+
+  const imgTop = new Image();
+  imgTop.crossOrigin = 'anonymous';
+  imgTop.onload = () => {
+    certTopLeftLogoImg = imgTop;
+    if (currentSection === 'constancias') renderCertStudioCanvas();
+  };
+  imgTop.src = '/uploads/logo-oficial-miisteg-transparent.png';
 }
 
 async function handleAdminLogin(e) {
@@ -863,7 +870,9 @@ function renderCertStudioCanvas() {
   ctx.lineWidth = 2;
   ctx.strokeRect(54, 64, W - 108, H - 128);
 
-  if (certLogoImg) {
+  if (certTopLeftLogoImg) {
+    ctx.drawImage(certTopLeftLogoImg, 80, 78, 138, 138);
+  } else if (certLogoImg) {
     ctx.drawImage(certLogoImg, 85, 84, 130, 130);
   }
 

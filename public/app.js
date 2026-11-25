@@ -16,6 +16,7 @@ let currentAdminTab = 'config';
 let currentCertRegistro = null;
 let isAdminAuthenticated = false;
 let certLogoImage = null;
+let certTopLeftLogo = null;
 
 // Inicialización al cargar la página
 document.addEventListener('DOMContentLoaded', async () => {
@@ -41,15 +42,21 @@ function closeMobileMenu() {
 }
 
 function preloadLogoForCertificate() {
-  const img = new Image();
-  img.crossOrigin = 'anonymous';
-  img.onload = () => {
-    certLogoImage = img;
-    if (currentCertRegistro) {
-      dibujarConstanciaCanvas(currentCertRegistro);
-    }
+  const imgSeal = new Image();
+  imgSeal.crossOrigin = 'anonymous';
+  imgSeal.onload = () => {
+    certLogoImage = imgSeal;
+    if (currentCertRegistro) dibujarConstanciaCanvas(currentCertRegistro);
   };
-  img.src = '/uploads/logo-miisteg-transparent.png';
+  imgSeal.src = '/uploads/logo-miisteg-transparent.png';
+
+  const imgTop = new Image();
+  imgTop.crossOrigin = 'anonymous';
+  imgTop.onload = () => {
+    certTopLeftLogo = imgTop;
+    if (currentCertRegistro) dibujarConstanciaCanvas(currentCertRegistro);
+  };
+  imgTop.src = '/uploads/logo-oficial-miisteg-transparent.png';
 }
 
 async function loadAppData() {
@@ -583,8 +590,10 @@ function dibujarConstanciaCanvas(reg) {
   ctx.lineWidth = 2;
   ctx.strokeRect(54, 64, W - 108, H - 128);
 
-  // Dibujar el Logo Oficial Extraído MIISTEG en la esquina superior izquierda
-  if (certLogoImage) {
+  // Dibujar el Nuevo Logo Oficial MIISTEG en la esquina superior izquierda
+  if (certTopLeftLogo) {
+    ctx.drawImage(certTopLeftLogo, 80, 78, 138, 138);
+  } else if (certLogoImage) {
     ctx.drawImage(certLogoImage, 85, 84, 130, 130);
   }
 
