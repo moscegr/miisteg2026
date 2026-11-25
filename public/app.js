@@ -454,7 +454,7 @@ async function submitRegistro(event) {
       id: 'reg-' + Date.now(),
       folio: `MIISTEG-2026-${String(nextNum).padStart(4, '0')}`,
       ...payload,
-      constanciaAprobada: true,
+      constanciaAprobada: false,
       fechaRegistro: new Date().toISOString()
     };
     appData.registros.push(reg);
@@ -478,10 +478,13 @@ function mostrarConfirmacionRegistro(reg) {
           Participante: <strong>${escapeHtml(reg.nombre)}</strong> (${escapeHtml(reg.rol)})<br/>
           Turno: ${escapeHtml(reg.turno)} • Sede: Auditorio José Joaquín de Herrera
         </p>
+        <p style="font-size:0.82rem; color:#fde68a; margin-top:0.45rem;">
+          📋 <strong>Nota importante:</strong> Conserva tu folio para el pase de lista el día del evento. Tu constancia se habilitará manualmente una vez acreditada tu asistencia.
+        </p>
       </div>
       <div>
-        <button type="button" class="btn btn-primary btn-sm" onclick="probarFolio('${escapeHtml(reg.folio)}'); document.getElementById('constancias').scrollIntoView({behavior:'smooth'});">
-          🎓 Ver Mi Constancia Ahora
+        <button type="button" class="btn btn-outline btn-sm" onclick="probarFolio('${escapeHtml(reg.folio)}'); document.getElementById('constancias').scrollIntoView({behavior:'smooth'});">
+          🔍 Consultar Estatus de Folio
         </button>
       </div>
     </div>
@@ -523,11 +526,19 @@ function buscarConstancia() {
   }
 
   const reg = resultados[0];
-  if (!reg.constanciaAprobada && !(appData.config && appData.config.constanciasLiberadas)) {
+  if (!reg.constanciaAprobada) {
     msgBox.innerHTML = `
-      <div style="padding:1rem; border-radius:12px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); color:#fde68a;">
-        Registro localizado: <strong>${escapeHtml(reg.nombre)}</strong> (Folio: ${escapeHtml(reg.folio)}).<br/>
-        Tu constancia se encuentra en proceso de validación de asistencia por el Comité Organizador.
+      <div style="padding:1.15rem; border-radius:14px; background:rgba(245,158,11,0.14); border:1px solid rgba(245,158,11,0.45); color:#fde68a;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.35rem;">
+          <strong>📋 Registro Confirmado — Folio: ${escapeHtml(reg.folio)}</strong>
+          <span class="tag-chip" style="background:rgba(245,158,11,0.25); color:#fef08a;">⏳ Pendiente de Pase de Lista</span>
+        </div>
+        <p style="font-size:0.9rem; color:#f8fafc; margin-bottom:0.25rem;">
+          Participante: <strong>${escapeHtml(reg.nombre)}</strong> (${escapeHtml(reg.rol)}) • ${escapeHtml(reg.turno || '')}
+        </p>
+        <p style="font-size:0.84rem; color:#cbd5e1;">
+          Tu lugar en el foro está registrado. La descarga de tu constancia oficial se habilitará manualmente una vez que el Comité Organizador realice el pase de lista y valide tu asistencia.
+        </p>
       </div>
     `;
     wrap.style.display = 'none';

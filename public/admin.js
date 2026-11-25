@@ -535,7 +535,7 @@ function abrirModalRegistro(editIndex = null) {
     turno: 'Ambos Turnos (09:30 a 16:00 h)',
     eje: 'EJE 1',
     ponenciaTitulo: '',
-    constanciaAprobada: true
+    constanciaAprobada: false
   };
 
   const body = document.getElementById('editModalBody');
@@ -770,9 +770,9 @@ function renderConstanciasSection(container) {
 
         <form onsubmit="guardarConfigConstancias(event)" class="form-grid">
           <div class="form-group full">
-            <label style="display:flex; align-items:center; gap:0.6rem; cursor:pointer; background:rgba(20,184,166,0.15); padding:0.75rem; border-radius:10px; border:1px solid rgba(20,184,166,0.35);">
+            <label style="display:flex; align-items:center; gap:0.6rem; cursor:pointer; background:rgba(245,158,11,0.14); padding:0.75rem; border-radius:10px; border:1px solid rgba(245,158,11,0.35);">
               <input type="checkbox" id="certLiberadasCheck" ${cfg.constanciasLiberadas ? 'checked' : ''} />
-              <span><strong>Liberación Global Automática:</strong> Permitir que todas las personas registradas descarguen su constancia en el portal público</span>
+              <span><strong>Modo Pase de Lista Manual Activo:</strong> Cada registro nuevo entra como "Pendiente" y sólo puede descargar su constancia cuando el administrador aprueba su asistencia en la tabla de Registros.</span>
             </label>
           </div>
 

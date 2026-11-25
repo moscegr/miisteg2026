@@ -73,7 +73,7 @@ async function initMongo() {
     if (!existingState) {
       await stateCol.insertOne({
         _id: 'main',
-        config: seed.config || {},
+        config: { ...(seed.config || {}), constanciasLiberadas: false },
         ejes: seed.ejes || [],
         programa: seed.programa || [],
         ponencias: seed.ponencias || [],
@@ -82,6 +82,11 @@ async function initMongo() {
         updatedAt: new Date()
       });
       console.log('[MongoDB] Colección portal_state inicializada con datos semilla de MIISTEG.');
+    } else if (existingState.config && existingState.config.constanciasLiberadas === true && !existingState.config.manualOverrideSet) {
+      await stateCol.updateOne(
+        { _id: 'main' },
+        { $set: { 'config.constanciasLiberadas': false, 'config.manualOverrideSet': true } }
+      );
     }
 
     const regCount = await regCol.countDocuments();
@@ -187,7 +192,7 @@ async function createRegistro(body) {
     turno: body.turno || 'Ambos Turnos (09:30 a 16:00 h)',
     eje: body.eje || 'EJE 1',
     ponenciaTitulo: (body.ponenciaTitulo || '').trim(),
-    constanciaAprobada: Boolean(current.config && current.config.constanciasLiberadas),
+    constanciaAprobada: false,
     fechaRegistro: new Date().toISOString()
   };
 
